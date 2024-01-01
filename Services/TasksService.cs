@@ -1,64 +1,102 @@
+using MyTasks.Interfaces;
 using MyTasks.Models;
 using Task = MyTasks.Models.Task;
+// using System.IO;
+// using System.Text.Json.Serialization;
+// using System.Text.Json;
+// using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+using System;
+using System.Text.Json;
+
+
+
 namespace MyTasks.Services;
-
-public static class TasksService
+public class TasksService : ITasksService
 {
-    private static List<Task> tasks;
-    static TasksService()
+    List<Task> tasks{get;}
+    private string fileName = "TasksList.json";
+    public TasksService()
     {
-        tasks = new List<Task>
+        this.fileName = Path.Combine("Data","TasksList.json");
+        using (var jsonFile = File.OpenText(fileName))
         {
-            new Task {Id = 1,Name = "Learning for c# test", IsDone = false},
-            new Task {Id = 2,Name = "Learning for Data Struct test", IsDone = false},
-            new Task {Id = 3,Name = "Learning for Operating Systems test", IsDone = false},
-        };
+            
+            tasks =  JsonSerializer.Deserialize<List<Task>>(jsonFile.ReadToEnd(),
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+        }
+       
     }
-    public static List<Task> GetAll() => tasks;
 
-    public static Task GetById(int id)
+    private void updateJson()
+    {
+        File.WriteAllText(fileName, JsonSerializer.Serialize(tasks));
+    }
+
+
+    public List<Task> GetAll() => tasks;
+
+    public int Count => tasks.Count();
+    public Task? GetById(int id)
     {
         return tasks.FirstOrDefault(p => p.Id == id);
+
     }
-    public static int Add(Task newTask)
+    public int Add(Task newTask)
     {
-        if(tasks.Count==0)
+        if (tasks.Count == 0)
         {
-            newTask.Id  =1;
+            newTask.Id = 1;
         }
         else
         {
-            newTask.Id = tasks.Max(p => p.Id)+1;
+            newTask.Id = tasks.Max(p => p.Id) + 1;
         }
         tasks.Add(newTask);
+
+        updateJson();
 
         return newTask.Id;
     }
 
-    public static bool Update(int id,Task newTask)
+    public bool Update(int id, Task newTask)
     {
-        if(id!=newTask.Id)
+        if (id != newTask.Id)
             return false;
         var existingTask = GetById(id);
-        if(existingTask == null)
+        if (existingTask == null)
             return false;
         var index = tasks.IndexOf(existingTask);
-        if(index==-1)
+        if (index == -1)
             return false;
         tasks[index] = newTask;
-
+        updateJson();
         return true;
     }
 
-    public static bool Delete(int id)
+    public bool Delete(int id)
     {
         var existingTask = GetById(id);
-        if(existingTask==null)
+        if (existingTask == null)
             return false;
         var index = tasks.IndexOf(existingTask);
-        if(index ==-1)
+        if (index == -1)
             return false;
         tasks.RemoveAt(index);
+        updateJson();
         return true;
+    }
+}
+
+public static class TaskUtils
+{
+    public static void AddTask(this IServiceCollection services)
+    {
+        services.AddSingleton<ITasksService, TasksService>();
     }
 }

@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using MyTasks.Models;
-using MyTasks.Services;
 using Task = MyTasks.Models.Task;
-
+using MyTasks.Interfaces;
+using MyTasks.Services;
 
 namespace MyTasks.Controllers;
 
@@ -10,6 +9,12 @@ namespace MyTasks.Controllers;
 [Route("[controller]")]
 public class TaskController : ControllerBase
 {
+    private ITasksService TasksService;
+    public TaskController(ITasksService TasksService)
+    {
+        this.TasksService = TasksService;
+    }
+    
     [HttpGet]
     public ActionResult<List<Task>> Get()
     {
@@ -43,6 +48,19 @@ public class TaskController : ControllerBase
         }
         return NoContent();
     }
+    [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var task = TasksService.GetById(id);
+           
+            if (task is null)
+                return  NotFound();
+
+            TasksService.Delete(id);
+
+            var tt = TasksService.Count;
+            return Content(TasksService.Count.ToString());
+        }
 
     
 }

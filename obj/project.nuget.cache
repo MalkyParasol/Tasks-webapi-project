@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wyVUwnPg8yWZriWzO/UsogIL/7WdMH/XW0mc4kSkRtIR5NgrlDH1U0owrIMc+8nJRvjw9KCcu+FQedgSlCQ0uw==",
+  "dgSpecHash": "i9vmvWAgt/KBVddN7K6VA45nXYs4InIx17JsNk97+mEuGlYZE/AIMmWa7G/ll9rrks+5RGpRUsk7afaSS6C0yw==",
   "success": true,
-  "projectFilePath": "G:\\זילברברג\\MyTasks\\MyTasks.csproj",
+  "projectFilePath": "G:\\זילברברג\\שיעורי בית\\MyTasks2\\Tasks-webapi-project\\MyTasks.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
