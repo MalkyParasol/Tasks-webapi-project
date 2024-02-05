@@ -213,11 +213,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\זילברברג\\שיעורי בית\\MyTasks2\\Tasks-webapi-project\\MyTasks.csproj",
+      "projectUniqueName": "G:\\זילברברג\\שיעורי בית\\MyTasks3\\Tasks-webapi-project\\MyTasks.csproj",
       "projectName": "MyTasks",
-      "projectPath": "G:\\זילברברג\\שיעורי בית\\MyTasks2\\Tasks-webapi-project\\MyTasks.csproj",
+      "projectPath": "G:\\זילברברג\\שיעורי בית\\MyTasks3\\Tasks-webapi-project\\MyTasks.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "G:\\זילברברג\\שיעורי בית\\MyTasks2\\Tasks-webapi-project\\obj\\",
+      "outputPath": "G:\\זילברברג\\שיעורי בית\\MyTasks3\\Tasks-webapi-project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
