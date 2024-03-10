@@ -1,4 +1,4 @@
-const uri = "/task";
+const uri = "/api";
 let tasks = [];
 
 

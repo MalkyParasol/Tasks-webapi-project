@@ -6,7 +6,7 @@ using MyTasks.Services;
 namespace MyTasks.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/")]
 public class TaskController : ControllerBase
 {
     private ITasksService TasksService;

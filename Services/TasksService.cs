@@ -1,10 +1,10 @@
 using MyTasks.Interfaces;
 using MyTasks.Models;
 using Task = MyTasks.Models.Task;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.IO;
+// using System;
 using System.Text.Json;
 
 
@@ -16,17 +16,15 @@ public class TasksService : ITasksService
     private string fileName = "TasksList.json";
     public TasksService()
     {
-        this.fileName = Path.Combine("Data","TasksList.json");
-        using (var jsonFile = File.OpenText(fileName))
+        fileName = Path.Combine("Data","TasksList.json");
+        using var jsonFile = File.OpenText(fileName);
+        tasks = JsonSerializer.Deserialize<List<Models.Task>>(jsonFile.ReadToEnd(),
+        new JsonSerializerOptions
         {
-            
-            tasks =  JsonSerializer.Deserialize<List<Task>>(jsonFile.ReadToEnd(),
-            new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
+            PropertyNameCaseInsensitive = true
         }
-       
+        ) ?? new List<Task>();
+
     }
 
     private void updateJson()
@@ -37,7 +35,7 @@ public class TasksService : ITasksService
 
     public List<Task> GetAll() => tasks;
 
-    public int Count => tasks.Count();
+    
     public Task? GetById(int id)
     {
         return tasks.FirstOrDefault(p => p.Id == id);
@@ -87,6 +85,8 @@ public class TasksService : ITasksService
         updateJson();
         return true;
     }
+
+    public int Count => tasks.Count();
 }
 
 public static class TaskUtils

@@ -1,7 +1,19 @@
 using MyTasks.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 var builder = WebApplication.CreateBuilder(args);
 
+//authentication
+
+builder.Services.AddAuthentication(options => {options.DefaultScheme =JwtBearerDefaults.AuthenticationScheme;})
+.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+        options => builder.Configuration.Bind("JwtSettings", options));
+
+
+
 // Add services to the container.
+
 
 builder.Services.AddControllers();
 builder.Services.AddTask();
