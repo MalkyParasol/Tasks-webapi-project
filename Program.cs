@@ -8,8 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 //authentication
 
 builder.Services.AddAuthentication(options => { options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; })
-.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
-        options => builder.Configuration.Bind("JwtSettings", options));
+.AddJwtBearer(cfg =>{
+    cfg.RequireHttpsMetadata = false;
+    cfg.TokenValidationParameters = TasksTokenService.GetTokenValidationParameters();
+});
+    // JwtBearerDefaults.AuthenticationScheme,
+    //     options => builder.Configuration.Bind("JwtSettings", options));
 
 
 
@@ -23,6 +27,7 @@ builder.Services.AddAuthorization(authorizationOptions =>
 
 builder.Services.AddControllers();
 builder.Services.AddTask();
+builder.Services.AddAdmin();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -50,7 +55,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-app.UselogMiddleware();
+//app.UselogMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

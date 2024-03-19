@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Dan",
+        "password":"dandan",
+        "tasksList":
+        [
+            { "Id": 0, "Name": "Learning for Operating Systems test", "IsDone": false },
+            { "Id": 1, "Name": "do homework", "IsDone": true },
+            { "Id": 2, "Name": "Learning for Data Struct test", "IsDone": true },
+            { "Id": 3, "Name": "do homework", "IsDone": true },
+            { "Id": 4, "Name": "wash dishes", "IsDone": false },
+            { "Id": 5, "Name": "Orgenize", "IsDone": false },
+            { "Id": 6, "Name": "walking", "IsDone": true },
+            { "Id": 7, "Name": "project", "IsDone": true }
+          ]
+    },
+    {
+        "name":"Gad",
+        "password":"gadi",
+        "tasksList":
+        [
+            {"id":0,"Name":"shopping","IsDone":false},
+            {"id":1,"Name":"prectice playing the piano","IsDone":false}
+        ]
+    }
+]

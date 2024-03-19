@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\12-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj": {}
+    "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\18-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\12-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj": {
+    "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\18-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\12-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\18-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
         "projectName": "MyTasks",
-        "projectPath": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\12-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
+        "projectPath": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\18-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\12-03-2024 project\\Tasks-webapi-project\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\18-03-2024 project\\Tasks-webapi-project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

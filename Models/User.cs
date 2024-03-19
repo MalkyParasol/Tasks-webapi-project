@@ -1,13 +1,10 @@
 namespace MyTasks.Models;
 
-public class User{
+public class User:Person{
 
-    public string Name;
+    public List<Task> Tasks{get;set;}
 
-    public string Password;
-
-    public User(string name, string password){
-        Name = name;
-        Password = password;
+    public User(string name, string password,List<Task> tasks):base(name,password){
+        Tasks = tasks;
     }
 }

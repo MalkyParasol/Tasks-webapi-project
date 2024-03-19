@@ -35,3 +35,15 @@
 10/03/2024 15:31:39 - /index.html.GET took 44ms.User: unknown
 10/03/2024 15:31:39 - /js/site.js.GET took 50ms.User: unknown
 10/03/2024 15:31:39 - /api.GET took 66ms.User: unknown
+19/03/2024 22:58:33 - /index.html.GET took 230ms.User: unknown
+19/03/2024 22:58:34 - /css/site.css.GET took 20ms.User: unknown
+19/03/2024 22:58:34 - /js/site.js.GET took 85ms.User: unknown
+19/03/2024 22:58:34 - /favicon.ico.GET took 36ms.User: unknown
+19/03/2024 22:58:34 - /api.GET took 127ms.User: unknown
+19/03/2024 22:58:42 - /swagger/index.html.GET took 96ms.User: unknown
+19/03/2024 22:58:42 - /swagger/swagger-ui.css.GET took 2ms.User: unknown
+19/03/2024 22:58:42 - /swagger/favicon-32x32.png.GET took 0ms.User: unknown
+19/03/2024 22:58:47 - /swagger/index.html.GET took 0ms.User: unknown
+19/03/2024 22:58:47 - /swagger/swagger-ui-standalone-preset.js.GET took 34ms.User: unknown
+19/03/2024 22:58:47 - /swagger/swagger-ui-bundle.js.GET took 50ms.User: unknown
+19/03/2024 22:58:47 - /swagger/v1/swagger.json.GET took 239ms.User: unknown
