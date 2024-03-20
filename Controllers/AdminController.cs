@@ -5,6 +5,7 @@ using MyTasks.Services;
 using Microsoft.AspNetCore.Authorization;
 using MyTasks.Models;
 using System.Security.Claims;
+using Microsoft.VisualBasic;
 
 namespace MyTasks.Controllers;
 
@@ -21,7 +22,7 @@ public class AdminController : ControllerBase
     [HttpPost]
     [Route("[action]")]
 
-    public ActionResult<String> Login([FromBody] Person person)
+    public ActionResult<string> Login([FromBody] Person person)
     {
         
         var claims = new List<Claim>();
@@ -46,4 +47,54 @@ public class AdminController : ControllerBase
 
         return new OkObjectResult(TasksTokenService.WriteToken(token));
     }
+
+    [HttpGet]
+    [Route("user")]
+    [Authorize(Policy ="Admin")]
+
+    public ActionResult GetAllUsers(){
+         
+        return Ok(AdminService.GetAllUsers().Select(u => new { id = u.Id, name = u.Name, password = u.Password }).ToList());
+    }
+    [HttpPost]
+    [Route("user")]
+    [Authorize(Policy = "Admin")]
+    public IActionResult AddNewUser([FromBody] Person person)
+    {
+        if(string.IsNullOrEmpty(person.Name) || string.IsNullOrEmpty(person.Password))
+        {
+            return BadRequest("Missing username or password");
+        }
+        User? newUser = AdminService.AddNewUser(person);
+        if(newUser==null)
+        {
+             return Conflict("Username and password already exist in the system");
+        }
+        else
+        {
+            return Ok(newUser);
+        }
+             
+    }
+
+    [HttpDelete]
+    [Route("user/{id}")]
+    [Authorize(Policy = "Admin")]
+
+    public IActionResult DeleteUser(int id)
+    {
+        var user = AdminService.GetUserById(id);
+        if(user == null)
+        {
+            return NotFound();
+        }
+
+        if(!AdminService.DeleteUser(user))
+        {
+             return BadRequest(new { message = "An error occurred while deleting the user." });
+        }
+
+        return Ok(new { message = "The user was deleted successfully." });
+    }
+    
 }

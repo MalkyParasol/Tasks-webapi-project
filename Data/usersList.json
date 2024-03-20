@@ -1,26 +1,40 @@
 [
-    {
-        "name":"Dan",
-        "password":"dandan",
-        "tasksList":
-        [
-            { "Id": 0, "Name": "Learning for Operating Systems test", "IsDone": false },
-            { "Id": 1, "Name": "do homework", "IsDone": true },
-            { "Id": 2, "Name": "Learning for Data Struct test", "IsDone": true },
-            { "Id": 3, "Name": "do homework", "IsDone": true },
-            { "Id": 4, "Name": "wash dishes", "IsDone": false },
-            { "Id": 5, "Name": "Orgenize", "IsDone": false },
-            { "Id": 6, "Name": "walking", "IsDone": true },
-            { "Id": 7, "Name": "project", "IsDone": true }
-          ]
-    },
-    {
-        "name":"Gad",
-        "password":"gadi",
-        "tasksList":
-        [
-            {"id":0,"Name":"shopping","IsDone":false},
-            {"id":1,"Name":"prectice playing the piano","IsDone":false}
-        ]
-    }
+  {
+    "Id":1,
+    "Tasks": [
+        { "Id": 1, "Name": "shopping", "IsDone": false },
+        { "Id": 2, "Name": "prectice playing the piano", "IsDone": false }
+      ],
+    "Name":"Malky",
+    "Password":"12345"
+  },
+  {
+    "Id": 2,
+    "Tasks": [
+      {
+        "Id": 1,
+        "Name": "Learning for Operating Systems test",
+        "IsDone": false
+      },
+      { "Id": 2, "Name": "do homework", "IsDone": true },
+      { "Id": 3, "Name": "Learning for Data Struct test", "IsDone": true },
+      { "Id": 4, "Name": "do homework", "IsDone": true },
+      { "Id": 5, "Name": "wash dishes", "IsDone": false },
+      { "Id": 6, "Name": "Orgenize", "IsDone": false },
+      { "Id": 7, "Name": "walking", "IsDone": true },
+      { "Id": 8, "Name": "project", "IsDone": true }
+    ],
+    "Name": "Dan",
+    "Password": "dandan"
+  },
+  {
+    "Id": 3,
+    "Tasks": [
+      { "Id": 1, "Name": "shopping", "IsDone": false },
+      { "Id": 2, "Name": "prectice playing the piano", "IsDone": false }
+    ],
+    "Name": "Gad",
+    "Password": "gadi"
+  },
+  { "Id": 4, "Tasks": [], "Name": "Yakov", "Password": "Y@#kovkov" }
 ]
