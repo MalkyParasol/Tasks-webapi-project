@@ -6,6 +6,7 @@ using MyTasks.Models;
 using Microsoft.Extensions.Options;
 using MyTasks.PasswordHashers;
 using NetDevPack.Security.PasswordHasher.Core;
+using Task = MyTasks.Models.Task;
 
 
 namespace MyTasks.Services;
@@ -18,66 +19,41 @@ public class AdminService : IAdminService
 
 
 
-    private readonly string fileName = "usersList.json";
+    private readonly IDataAccessService _dataAccessService;
 
     private List<User> users;
-    public AdminService()
+    public AdminService(IDataAccessService dataAccessService)
     {
-        fileName = Path.Combine("Data", "usersList.json");
-        using var jsonFile = File.OpenText(fileName);
-        users = JsonSerializer.Deserialize<List<Models.User>>(jsonFile.ReadToEnd(),
-        new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        }) ?? new List<User>();
+        _dataAccessService = dataAccessService;
     }
 
-    private void updateJson()
-    {
-        File.WriteAllText(fileName, JsonSerializer.Serialize(users));
-        //set users anew
-    }
+    
     public List<User> GetAllUsers()
     {
-        return users;
+        return _dataAccessService.GetAllUsers();
     }
 
     public User? GetUserById(int id)
     {
-        return users.Find(u => u.Id == id);
+       return _dataAccessService.GetUserById(id);
     }
 
     public bool DeleteUser(User user)
     {
-        try
-        {
-            users.Remove(user);
-            updateJson();
-            return true;
-        }
-        catch (Exception ex)
-        {
-            System.Console.WriteLine($"Error deleting user: {ex.Message}");
-            return false;
-        }
-
+        return _dataAccessService.DeleteUser(user);
 
     }
 
     public User? AddNewUser(Person person)
     {
 
-        User? existingUser = users.Find(u => u.Password == person.Password && u.Name == person.Name);
-        if (existingUser == null)
-        {
-            int id = users.Max(u => u.Id);
-            User newUser = new User(person.Name!, person.Password!, new List<Models.Task>(), id + 1);
-            users.Add(newUser);
-            updateJson();
-            return newUser;
-        }
-        return null;
+       return _dataAccessService.AddNewUser(person);
 
+    }
+
+    public bool AddNewTask(Task task, int userID)
+    {
+        return _dataAccessService.AddNewTask(task, userID);
     }
 }
 

@@ -21,12 +21,13 @@ builder.Services.AddAuthentication(options => { options.DefaultScheme = JwtBeare
 builder.Services.AddAuthorization(authorizationOptions =>
 {
     authorizationOptions.AddPolicy("Admin", policy => policy.RequireClaim("type", "Admin"));
-    authorizationOptions.AddPolicy("User", policy => policy.RequireClaim("type", "User"));
+    authorizationOptions.AddPolicy("User", policy => policy.RequireClaim("type", "User","Admin"));
 });
 // Add services to the container.
 
 
 builder.Services.AddControllers();
+builder.Services.AddDataAccess();
 builder.Services.AddTask();
 builder.Services.AddAdmin();
 builder.Services.configurService();

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UifXCm0BpDB8/pO6g/h/DCFT4vHS8iDiZt4YOJ+gFAxm85b2sRqPHOpiFjr7ntBM77WKh3X6sd66pb6AVRKMQw==",
+  "dgSpecHash": "S1vX4+IjA3XiBNEXJ1y1R36iJMafGMq5f0bxo+p6TTfELY8bkJWCXN4xsjRWsOFidYoE5xBjV1TPahYXL6BmnA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\21-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
+  "projectFilePath": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\25-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\libsodium\\1.0.19\\libsodium.1.0.19.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",

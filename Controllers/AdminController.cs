@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using MyTasks.Models;
 using System.Security.Claims;
 using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Identity;
 
 namespace MyTasks.Controllers;
 
@@ -36,21 +37,26 @@ public class AdminController : ControllerBase
         
         var claims = new List<Claim>();
 
-        List<User> users = AdminService.GetAllUsers();
+       
+
+       // List<User> users = AdminService.GetAllUsers();
 
            // new Claim("type","Admin");
 
         if(person.Name=="Malky" && person.Password=="12345")
         {
             claims.Add(new Claim("type","Admin"));
+            claims.Add(new Claim("id","1"));
         }
         else{
-            User? user = users.Find(u=>u.Name==person.Name&&u.Password==person.Password);
+            User? user = AdminService.GetAllUsers().FirstOrDefault(u => u.Name == person.Name && PasswordHasher.VerifyHashedPassword(u, u.Password!, person.Password??"") == PasswordVerificationResult.Success);
+            //User? user = users.Find(u=>u.Name==person.Name&& u.Password==person.Password);
             if(user==null)
                 return Unauthorized();
             claims.Add(new Claim("type","User"));
+            claims.Add(new Claim("id", user.Id.ToString()));
         }
-        //claims.Add(new Claim("userName", person.Name!));
+        claims.Add(new Claim("userName", person.Name!));
             
                   //  new Claim("password",person.Password!)};
 
@@ -118,5 +124,43 @@ public class AdminController : ControllerBase
 
         return Ok(new { message = "The user was deleted successfully." });
     }
-    
+    [HttpGet]
+    [Route("user/todo")]
+    [Authorize(Policy = "Admin")]
+    public IActionResult GetToDoItems()
+    {
+        var users = AdminService.GetAllUsers();
+        List<Task> tasks = users.SelectMany(u => u.Tasks).ToList();
+        return Ok(tasks);
+    }
+
+    [HttpGet]
+    [Route("user{userId}/todo{taskId}")]
+    [Authorize(Policy = "Admin")]
+    public IActionResult GetToDoById(int userId,int taskId)
+    {
+        var user = AdminService.GetUserById(userId);    
+        if(user == null)
+        {
+            return NotFound("user not found");
+        }
+        var task = user.Tasks.Find(t => t.Id == taskId);
+        if(task == null)
+        {
+            return NotFound("task not found");
+        }
+        return Ok(task);
+    }
+    [HttpPost]
+    [Route("user/{userId}/todo")]
+    [Authorize(Policy = "Admin")]
+    public IActionResult AddNewTask([FromBody] Task task,int userId)
+    {
+
+        if (AdminService.GetUserById(userId) == null)
+            return NotFound("user not found!");
+        if (!AdminService.AddNewTask(task, userId))
+            return BadRequest("can not add this task!");
+        return Ok("task added succesfully!");
+    }
 }
