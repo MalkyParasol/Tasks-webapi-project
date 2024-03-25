@@ -15,8 +15,17 @@ namespace MyTasks.Controllers;
 public class AdminController : ControllerBase
 {
     private IAdminService AdminService;
-    public AdminController(IAdminService AdminService){
+    //---------
+    private IPasswordHasher<User> PasswordHasher;
+    //---------
+    public AdminController(IAdminService AdminService, IPasswordHasher<User> passwordHasher)
+    {
+        //,IPasswordHasher<User> PasswordHasher
         this.AdminService = AdminService;
+        PasswordHasher = passwordHasher;
+        //-----------
+        // this.PasswordHasher = PasswordHasher;
+        //-----------
     }
 
     [HttpPost]
@@ -41,6 +50,9 @@ public class AdminController : ControllerBase
                 return Unauthorized();
             claims.Add(new Claim("type","User"));
         }
+        //claims.Add(new Claim("userName", person.Name!));
+            
+                  //  new Claim("password",person.Password!)};
 
         
         var token = TasksTokenService.GetToken(claims);
@@ -61,17 +73,26 @@ public class AdminController : ControllerBase
     [Authorize(Policy = "Admin")]
     public IActionResult AddNewUser([FromBody] Person person)
     {
-        if(string.IsNullOrEmpty(person.Name) || string.IsNullOrEmpty(person.Password))
+        
+        if (person == null ||string.IsNullOrEmpty(person.Name) || string.IsNullOrEmpty(person.Password))
         {
             return BadRequest("Missing username or password");
         }
+        //------
+       var hashedPassword = PasswordHasher.HashPassword(person.Password);
+        person.Password= hashedPassword;
+        //----
         User? newUser = AdminService.AddNewUser(person);
         if(newUser==null)
         {
-             return Conflict("Username and password already exist in the system");
+            //----
+            return Conflict("User with the same name already exists");
+            //---
+            // return Conflict("Username and password already exist in the system");
         }
         else
         {
+            
             return Ok(newUser);
         }
              
@@ -88,7 +109,8 @@ public class AdminController : ControllerBase
         {
             return NotFound();
         }
-
+        if(user.Name=="Malky" && user.Password=="12345")
+            return BadRequest("The administrator cannot be deleted");
         if(!AdminService.DeleteUser(user))
         {
              return BadRequest(new { message = "An error occurred while deleting the user." });

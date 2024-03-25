@@ -1,10 +1,86 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\10-03-2024 - project\\Tasks-webapi-project\\",
+  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\10-03-2024 - project\\tasks-webapi-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\data\\userslist.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:data\\userslist.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\interfaces\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:interfaces\\ipasswordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\passwordhashers\\argon2id.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:passwordhashers\\argon2id.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\interfaces\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:interfaces\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\services\\taskstokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:services\\taskstokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\services\\tasksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:services\\tasksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\interfaces\\itasksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:interfaces\\itasksservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\data\\taskslist.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:data\\taskslist.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|c:\\users\\user\\documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\tasks-webapi-project\\mytasks.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6EA50DF4-011E-4E78-A0D5-5EFC497DCE22}|MyTasks.csproj|solutionrelative:mytasks.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +90,270 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
+              "Title": "AdminService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\AdminService.cs",
+              "RelativeDocumentMoniker": "Services\\AdminService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\AdminService.cs",
+              "RelativeToolTip": "Services\\AdminService.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAuwF0AAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T09:45:28.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TasksTokenService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\TasksTokenService.cs",
+              "RelativeDocumentMoniker": "Services\\TasksTokenService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\TasksTokenService.cs",
+              "RelativeToolTip": "Services\\TasksTokenService.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAmwCwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:07:42.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:08:15.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\10-03-2024 - project\\Tasks-webapi-project\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\10-03-2024 - project\\Tasks-webapi-project\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAjAAAA",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAADwvzoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-10T13:41:22.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Argon2id.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\PasswordHashers\\Argon2id.cs",
+              "RelativeDocumentMoniker": "PasswordHashers\\Argon2id.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\PasswordHashers\\Argon2id.cs",
+              "RelativeToolTip": "PasswordHashers\\Argon2id.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAowB8AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T21:56:58.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAiwFAAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:11:28.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IPasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\IPasswordHasher.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IPasswordHasher.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\IPasswordHasher.cs",
+              "RelativeToolTip": "Interfaces\\IPasswordHasher.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAmwA0AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T09:11:50.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IUsersService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\IUsersService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IUsersService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\IUsersService.cs",
+              "RelativeToolTip": "Interfaces\\IUsersService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:02:44.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "usersList.json",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Data\\usersList.json",
+              "RelativeDocumentMoniker": "Data\\usersList.json",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Data\\usersList.json",
+              "RelativeToolTip": "Data\\usersList.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAD0AwAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-25T10:01:41.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAdminService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\IAdminService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IAdminService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\IAdminService.cs",
+              "RelativeToolTip": "Interfaces\\IAdminService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:01:51.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ITasksService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\ITasksService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\ITasksService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Interfaces\\ITasksService.cs",
+              "RelativeToolTip": "Interfaces\\ITasksService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvw4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:02:59.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\Admin.cs",
+              "RelativeDocumentMoniker": "Models\\Admin.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\Admin.cs",
+              "RelativeToolTip": "Models\\Admin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:04:45.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAuwCIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:05:07.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\Person.cs",
+              "RelativeDocumentMoniker": "Models\\Person.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\Person.cs",
+              "RelativeToolTip": "Models\\Person.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAA4wBEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:05:24.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Task.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\Task.cs",
+              "RelativeDocumentMoniker": "Models\\Task.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Models\\Task.cs",
+              "RelativeToolTip": "Models\\Task.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAUwA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:05:38.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TasksService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\TasksService.cs",
+              "RelativeDocumentMoniker": "Services\\TasksService.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Services\\TasksService.cs",
+              "RelativeToolTip": "Services\\TasksService.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAiwGEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:07:28.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TasksList.json",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Data\\TasksList.json",
+              "RelativeDocumentMoniker": "Data\\TasksList.json",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Data\\TasksList.json",
+              "RelativeToolTip": "Data\\TasksList.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-25T10:01:10.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TaskController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Controllers\\TaskController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TaskController.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Controllers\\TaskController.cs",
+              "RelativeToolTip": "Controllers\\TaskController.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAqwEIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:00:56.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAmwBwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-25T10:00:18.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MyTasks.csproj",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
+              "RelativeDocumentMoniker": "MyTasks.csproj",
+              "ToolTip": "C:\\Users\\user\\Documents\\\u05EA\u05DB\u05E0\u05D5\u05EA\\\u05D6\u05D9\u05DC\u05D1\u05E8\u05D1\u05E8\u05D2\\21-03-2024 project\\Tasks-webapi-project\\MyTasks.csproj",
+              "RelativeToolTip": "MyTasks.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-24T21:57:13.79Z",
               "EditorCaption": ""
             }
           ]

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using MyTasks.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 //authentication
@@ -28,6 +29,8 @@ builder.Services.AddAuthorization(authorizationOptions =>
 builder.Services.AddControllers();
 builder.Services.AddTask();
 builder.Services.AddAdmin();
+builder.Services.configurService();
+builder.Services.AddUser();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>

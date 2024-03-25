@@ -1,2 +1,20 @@
-/bin
-/obj
+#תיקיות ביניים
+obj/
+bin/
+
+# קבצי זמניים
+*.tmp
+*.TMP
+
+# קבצי log
+*.log
+*.LOG
+
+# תיקיות נוספות
+.vs/
+packages/
+node_modules/
+
+# קבצים ספציפיים
+launchSettings.json
+*.user
