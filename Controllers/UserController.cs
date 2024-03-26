@@ -13,11 +13,13 @@ namespace MyTasks.Controllers;
 [Authorize(Policy ="User")]
 public class UserController : ControllerBase
 {
-    private IUserService UserService;
+    private ITaskManagementService _taskManagementService;
 
-    public UserController(IUserService UserService)
+    
+    public UserController(ITaskManagementService taskManagementService)
     {
-        this.UserService = UserService;
+        _taskManagementService = taskManagementService;
+       
     }
 
 
@@ -28,7 +30,8 @@ public class UserController : ControllerBase
         {
             return null;
         }
-        User user = UserService.GetUserById(int.Parse(id))!;
+       
+        User user = _taskManagementService.GetUserById(int.Parse(id))!;
         if (user == null)
         {
             return null;
@@ -77,7 +80,7 @@ public class UserController : ControllerBase
         {
             return NotFound("user not found");
         }
-        if (!UserService.AddNewTask(task, int.Parse(id)))
+        if (!_taskManagementService.AddNewTask(task, int.Parse(id)))
             return BadRequest("can not add this task!");
         return Ok("task added succesfully!");
     }
@@ -85,11 +88,16 @@ public class UserController : ControllerBase
     [Route("todo/{taskId}")]
     public IActionResult UpdateTask([FromBody] Task task,int taskId)
     {
-        if(taskId!=task.Id)
+        User? user = GetUserFromClaims();
+        if (user == null)
         {
-            task.Id = taskId;
+            return NotFound("user not found");
         }
-        Task updatedTask = UserService.UpdateTask(task, taskId);
+        if (taskId!=task.Id)
+        {
+            return BadRequest("id and taskId must be the same!");
+        }
+        Task updatedTask = _taskManagementService.UpdateTask(task,user.Id,taskId)!;
         if (updatedTask == null)
             return BadRequest("can not update this task");
         return Ok(updatedTask);

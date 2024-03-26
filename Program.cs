@@ -27,11 +27,9 @@ builder.Services.AddAuthorization(authorizationOptions =>
 
 
 builder.Services.AddControllers();
-builder.Services.AddDataAccess();
+builder.Services.AddTaskManagement();
 builder.Services.AddTask();
-builder.Services.AddAdmin();
-builder.Services.configurService();
-builder.Services.AddUser();
+builder.Services.AddPasswordHasher();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
