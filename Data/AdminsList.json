@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "Name": "Malky",
+    "Password": "$argon2id$v=19$m=524288,t=8,p=1$8Eovr54VarI1WJvq8HqKwA$plEPImkSdeMTAHDt9pAZjjpXAWEWuaMusUwK4//7VjU"
+  },
+  {
+    "Id": 2,
+    "Name": "Michal",
+    "Password": "3241"
+  },
+  {
+    "Id": 3,
+    "Name": "Ester",
+    "Password": "589885"
+  }
+]

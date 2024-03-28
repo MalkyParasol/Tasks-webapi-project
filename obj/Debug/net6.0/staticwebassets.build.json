@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "R4km8+j/noVLpZejVylZCY2a6+0g0cSwezrj+qY0sdg=",
+  "Hash": "84Q+HnOgkMUUCsartlKephMwPcW/ZbpTyT7wWgicZ9Y=",
   "Source": "MyTasks",
   "BasePath": "_content/MyTasks",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "MyTasks\\wwwroot",
       "Source": "MyTasks",
-      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\26-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\28-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
       "BasePath": "_content/MyTasks",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\26-03-2024 project\\Tasks-webapi-project\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\28-03-2024 project\\Tasks-webapi-project\\wwwroot\\css\\site.css",
       "SourceId": "MyTasks",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\26-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\28-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
       "BasePath": "_content/MyTasks",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\26-03-2024 project\\Tasks-webapi-project\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\28-03-2024 project\\Tasks-webapi-project\\wwwroot\\index.html",
       "SourceId": "MyTasks",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\26-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\28-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
       "BasePath": "_content/MyTasks",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\26-03-2024 project\\Tasks-webapi-project\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\28-03-2024 project\\Tasks-webapi-project\\wwwroot\\js\\site.js",
       "SourceId": "MyTasks",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\26-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\user\\Documents\\תכנות\\זילברברג\\28-03-2024 project\\Tasks-webapi-project\\wwwroot\\",
       "BasePath": "_content/MyTasks",
       "RelativePath": "js/site.js",
       "AssetKind": "All",

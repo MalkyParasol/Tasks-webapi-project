@@ -9,7 +9,7 @@ using System.Reflection.Metadata.Ecma335;
 namespace MyTasks.Controllers;
 
 [ApiController]
-[Route("api/")]
+[Route("api/todo/")]
 [Authorize(Policy ="User")]
 public class UserController : ControllerBase
 {
@@ -41,7 +41,7 @@ public class UserController : ControllerBase
 
 
     [HttpGet]
-    [Route("todo")]
+
     public ActionResult GetToDoList(){
 
         User? user = GetUserFromClaims();
@@ -54,7 +54,7 @@ public class UserController : ControllerBase
         return  Ok(tasks);
     }
     [HttpGet]
-    [Route("todo/{taskId}")]
+    [Route("{taskId}")]
     public IActionResult GetToDoById(int taskId)
     {
 
@@ -72,7 +72,6 @@ public class UserController : ControllerBase
         
     }
     [HttpPost]
-    [Route("todo")]
     public IActionResult AddNewTask([FromBody] Task task)
     {
         string? id = User.FindFirst("id")?.Value;
@@ -85,7 +84,7 @@ public class UserController : ControllerBase
         return Ok("task added succesfully!");
     }
     [HttpPut]
-    [Route("todo/{taskId}")]
+    [Route("{taskId}")]
     public IActionResult UpdateTask([FromBody] Task task,int taskId)
     {
         User? user = GetUserFromClaims();
@@ -97,10 +96,33 @@ public class UserController : ControllerBase
         {
             return BadRequest("id and taskId must be the same!");
         }
-        Task updatedTask = _taskManagementService.UpdateTask(task,user.Id,taskId)!;
+        Task? updatedTask = _taskManagementService.UpdateTask(task,user.Id,taskId);
         if (updatedTask == null)
             return BadRequest("can not update this task");
         return Ok(updatedTask);
+    }
+    [HttpDelete]
+    [Route("{taskId}")]
+    public IActionResult DeleteTask(int taskId)
+    {
+        User? user = GetUserFromClaims();
+        if (user == null)
+        {
+            return NotFound("user not found!");
+        }
+        try
+        {
+            if (!_taskManagementService.DeleteTask(user.Id, taskId))
+                return BadRequest("cannot delete this task");
+            else
+                return Ok("task deleted succesfully");
+        }
+        catch(Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        
+       
     }
     
 }

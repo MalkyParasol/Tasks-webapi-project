@@ -16,11 +16,6 @@
         "Id": 3,
         "Name": "hanging laundry",
         "IsDone": false
-      },
-      {
-        "Id": 4,
-        "Name": "find the error",
-        "IsDone": false
       }
     ],
     "Name": "Malky",
@@ -73,11 +68,6 @@
         "Id": 9,
         "Name": "cleaning",
         "IsDone": true
-      },
-      {
-        "Id": 10,
-        "Name": "help friend",
-        "IsDone": true
       }
     ],
     "Name": "Dan",
@@ -94,7 +84,7 @@
       {
         "Id": 2,
         "Name": "prectice playing the piano",
-        "IsDone": false
+        "IsDone": true
       },
       {
         "Id": 3,

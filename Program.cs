@@ -9,12 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 //authentication
 
 builder.Services.AddAuthentication(options => { options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; })
-.AddJwtBearer(cfg =>{
+.AddJwtBearer(cfg =>
+{
     cfg.RequireHttpsMetadata = false;
     cfg.TokenValidationParameters = TasksTokenService.GetTokenValidationParameters();
 });
-    // JwtBearerDefaults.AuthenticationScheme,
-    //     options => builder.Configuration.Bind("JwtSettings", options));
 
 
 

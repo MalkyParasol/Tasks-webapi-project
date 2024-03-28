@@ -119,6 +119,41 @@ public class TaskManagementService:ITaskManagementService
             return false;
         }
     }
+    public bool DeleteTask(int userId,int TaskId)
+    {
+        User? user = users.Find(u => u.Id == userId);
+        if(user == null)
+        {
+            throw new Exception("user not found");
+        }
+        foreach (var task in user.Tasks)
+        {
+            if (task.Id == TaskId)
+            {
+                user.Tasks.Remove(task);
+                updateJson();
+                return true;
+            }
+        }
+        return false;
+            //foreach (var user in users)
+            //{
+            //    if (user.Id==userId)
+            //    {
+            //        foreach (var task in user.Tasks)
+            //        {
+            //            if (task.Id == TaskId)
+            //            {
+            //                user.Tasks.Remove(task);
+            //                updateJson();
+            //                return true;
+            //            }
+            //        }
+            //    }
+
+            //}
+            //return false;
+        }
 }
 
 public static class TaskManagementUtils

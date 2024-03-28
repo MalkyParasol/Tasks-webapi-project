@@ -20,5 +20,5 @@ public interface IPasswordHasher<TUser>
     /// <param name="hashedPassword">The hashed password to verify against.</param>
     /// <param name="providedPassword">The password provided for verification.</param>
     /// <returns>A <see cref="PasswordVerificationResult"/> indicating the result of the verification.</returns>
-    PasswordVerificationResult VerifyHashedPassword(TUser user, string hashedPassword, string providedPassword);
+    PasswordVerificationResult VerifyHashedPassword( string hashedPassword, string providedPassword);
 }

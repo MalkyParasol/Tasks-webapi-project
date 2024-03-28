@@ -32,7 +32,12 @@ public class AdminController : ControllerBase
         return Ok(_taskManagementService.GetAllUsers().Select(u => new { id = u.Id, name = u.Name, password = u.Password }).ToList());
     }
 
-
+    [HttpGet]
+    [Route("me")]
+    public ActionResult GetMyUser()
+    {
+        return Ok(_taskManagementService.GetAllUsers().Find(u => u.Name == "Malky" && PasswordHasher.VerifyHashedPassword( u.Password ?? "", "12345") == PasswordVerificationResult.Success));
+    }
     [HttpPost]
     public IActionResult AddNewUser([FromBody] Person person)
     {
@@ -66,7 +71,7 @@ public class AdminController : ControllerBase
         {
             return NotFound();
         }
-        if(user.Name=="Malky" && PasswordHasher.VerifyHashedPassword(user, user.Password!, "12345" ) == PasswordVerificationResult.Success) 
+        if(user.Name=="Malky" && PasswordHasher.VerifyHashedPassword( user.Password!, "12345" ) == PasswordVerificationResult.Success) 
             return BadRequest("The administrator cannot be deleted");
         if(!_taskManagementService.DeleteUser(user))
         {
@@ -110,5 +115,37 @@ public class AdminController : ControllerBase
         if (!_taskManagementService.AddNewTask(task, userId))
             return BadRequest("can not add this task!");
         return Ok("task added succesfully!");
+    }
+    [HttpPut]
+    [Route("{userId}/todo/{taskId}")]
+    public IActionResult UpdateUsersToDoItem([FromBody] Task task, int userId,int taskId) 
+    {
+        if (taskId != task.Id)
+        {
+            return BadRequest("id and taskId must be the same!");
+        }
+        Task? ApdatedTask = _taskManagementService.UpdateTask(task, userId,taskId);
+        if (ApdatedTask == null)
+            return NotFound("user or task id not found!");
+        return Ok(ApdatedTask);
+
+
+    }
+    [HttpDelete]
+    [Route("{userId}/todo/{taskId}")]
+    public IActionResult DeleteTask(int userId, int taskId) 
+    {
+        try
+        {
+            if (!_taskManagementService.DeleteTask(userId, taskId))
+                return BadRequest("cannot delete this task");
+            else
+                return Ok("task deleted succesfully");
+        }
+        catch(Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        
     }
 }
