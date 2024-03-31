@@ -1,0 +1,11 @@
+31/03/2024 19:36:03 - url: /api/user/todo | controller: Admin | method: GET | duration time:  89ms | User Name : Malky
+31/03/2024 19:39:47 - url: /api | controller: Task | method: GET | duration time:  1789ms | User Name : unknown
+31/03/2024 19:39:49 - url: /swagger/index.html | controller: Unknown | method: GET | duration time:  357ms | User Name : unknown
+31/03/2024 19:39:50 - url: /swagger/v1/swagger.json | controller: Unknown | method: GET | duration time:  576ms | User Name : unknown
+31/03/2024 19:40:13 - url: /api/Login | controller: Authentication | method: POST | duration time:  7654ms | User Name : unknown
+31/03/2024 19:40:38 - url: /api/me | controller: User | method: GET | duration time:  547ms | User Name : Dan
+31/03/2024 19:40:44 - url: /api/todo | controller: User | method: GET | duration time:  63ms | User Name : Dan
+31/03/2024 19:40:52 - url: /api/todo/5 | controller: User | method: GET | duration time:  75ms | User Name : Dan
+31/03/2024 19:41:16 - url: /api/Login | controller: Authentication | method: POST | duration time:  6243ms | User Name : Dan
+31/03/2024 19:41:33 - url: /api/user | controller: Admin | method: GET | duration time:  66ms | User Name : Malky
+31/03/2024 19:41:39 - url: /api/user/todo | controller: Admin | method: GET | duration time:  60ms | User Name : Malky

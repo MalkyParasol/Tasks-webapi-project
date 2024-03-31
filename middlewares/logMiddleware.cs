@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Controllers;
 using System.Diagnostics;
 
 public class logMiddleware{
@@ -17,12 +18,16 @@ public class logMiddleware{
         await next(c);
         sw.Stop();
 
+        var endpoint = c.GetEndpoint();
+        string controllerName = endpoint?.Metadata?.GetMetadata<ControllerActionDescriptor>()?.ControllerName ?? "Unknown";
+
         var requestTime = DateTime.Now;
-        string message =$"{requestTime} - {c.Request.Path}.{c.Request.Method} took {sw.ElapsedMilliseconds}ms.User: {c.User?.FindFirst("userId")?.Value ?? "unknown"}"; 
-             using (var writer = new StreamWriter("log.txt", true))
-            {
-                writer.WriteLine(message);
-            }    
+        string message =$"{requestTime} - url: {c.Request.Path} | controller: {controllerName} | method: {c.Request.Method} | duration time:  {sw.ElapsedMilliseconds}ms | User Name : {c.User?.FindFirst("userName")?.Value ?? "unknown"}";
+        using (StreamWriter writer = new StreamWriter("Loggers/log.txt", true))
+        {
+            writer.WriteLine(message);
+        }
+      
     }        
 
 }

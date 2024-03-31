@@ -46,20 +46,8 @@ public class AuthenticationController:ControllerBase
             claims.Add(new Claim("type", "User"));
             claims.Add(new Claim("id", user.Id.ToString()));
         }
-        //if (person.Name == "Malky" && person.Password == "12345")
-        //{
-        //   
-        //}
-        //else
-        //{
-        //    User? user = _taskManagementService.GetAllUsers().FirstOrDefault(u => u.Name == person.Name && _passwordHasher.VerifyHashedPassword(u, u.Password!, person.Password ?? "") == PasswordVerificationResult.Success);
-        //    if (user == null)
-        //        return Unauthorized();
-        //    claims.Add(new Claim("type", "User"));
-        //    claims.Add(new Claim("id", user.Id.ToString()));
-
-        //}
-        //claims.Add(new Claim("userName", person.Name!));
+        
+        claims.Add(new Claim("userName", person.Name!));
 
         var token = TasksTokenService.GetToken(claims);
 

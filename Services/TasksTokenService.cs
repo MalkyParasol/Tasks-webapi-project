@@ -15,7 +15,7 @@ namespace MyTasks.Services
         private static SymmetricSecurityKey key = new SymmetricSecurityKey(keyBytes);
 
         private static string issuer = "https://tasks-webapi-project.com";
-        static TasksTokenService() // Use static constructor for initialization
+        static TasksTokenService() 
         {
             var rng = RandomNumberGenerator.Create();
             rng.GetBytes(keyBytes);
@@ -43,7 +43,7 @@ namespace MyTasks.Services
                issuer,
                issuer,
                claims,
-               expires: DateTime.Now.AddDays(30.0),
+               expires: DateTime.Now.AddMonths(4),
                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
            );
 

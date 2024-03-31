@@ -15,21 +15,49 @@ public class TaskManagementService:ITaskManagementService
         fileName = Path.Combine("Data", "usersList.json");
         AccessUsers();
     }
+    private void WriteErrorLog(string message)
+    {
+        if (!string.IsNullOrEmpty(message))
+        {
+            using (StreamWriter writer = new StreamWriter("Loggers/errors.txt",true))
+            {
+                writer.WriteLine(message);
+            }
+        }
+    }
     private void AccessUsers()
     {
-        using var jsonFile = File.OpenText(fileName);
-        users = JsonSerializer.Deserialize<List<User>>(jsonFile.ReadToEnd(),
-        new JsonSerializerOptions
+        try
         {
-            PropertyNameCaseInsensitive = true
-        }) ?? new List<User>();
-        jsonFile.Close();
+            using var jsonFile = File.OpenText(fileName);
+            users = JsonSerializer.Deserialize<List<User>>(jsonFile.ReadToEnd(),
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            }) ?? new List<User>();
+            jsonFile.Close();
+        } 
+        catch (Exception ex)
+        {
+            WriteErrorLog($"Error loading user data: {ex.Message}");
+            users = new List<User>();
+        }
+       
+        
     }
 
     private void updateJson()
     {
-        File.WriteAllText(fileName, JsonSerializer.Serialize(users));
-        AccessUsers();
+        try
+        {
+            File.WriteAllText(fileName, JsonSerializer.Serialize(users));
+            AccessUsers();
+        }
+        catch(Exception ex)
+        {
+            WriteErrorLog($"Error saving user data: {ex.Message}");
+        }  
+        
     }
 
     public List<User> GetAllUsers()
@@ -115,7 +143,7 @@ public class TaskManagementService:ITaskManagementService
         }
         catch (Exception ex)
         {
-            System.Console.WriteLine($"Error deleting user: {ex.Message}");
+            WriteErrorLog($"Error deleting user: {ex.Message}");
             return false;
         }
     }
@@ -136,23 +164,6 @@ public class TaskManagementService:ITaskManagementService
             }
         }
         return false;
-            //foreach (var user in users)
-            //{
-            //    if (user.Id==userId)
-            //    {
-            //        foreach (var task in user.Tasks)
-            //        {
-            //            if (task.Id == TaskId)
-            //            {
-            //                user.Tasks.Remove(task);
-            //                updateJson();
-            //                return true;
-            //            }
-            //        }
-            //    }
-
-            //}
-            //return false;
         }
 }
 

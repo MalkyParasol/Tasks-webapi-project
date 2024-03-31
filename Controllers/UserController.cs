@@ -9,7 +9,7 @@ using System.Reflection.Metadata.Ecma335;
 namespace MyTasks.Controllers;
 
 [ApiController]
-[Route("api/todo/")]
+[Route("api/")]
 [Authorize(Policy ="User")]
 public class UserController : ControllerBase
 {
@@ -38,10 +38,20 @@ public class UserController : ControllerBase
         }
         return user;
     }
-
+    [HttpGet]
+    [Route("me")]
+    public ActionResult GetUser()
+    {
+        User? user = GetUserFromClaims();
+        if (user == null)
+        {
+            return NotFound("user not found");
+        }
+        return Ok(user);
+    }
 
     [HttpGet]
-
+    [Route("todo")]
     public ActionResult GetToDoList(){
 
         User? user = GetUserFromClaims();
@@ -54,7 +64,7 @@ public class UserController : ControllerBase
         return  Ok(tasks);
     }
     [HttpGet]
-    [Route("{taskId}")]
+    [Route("todo/{taskId}")]
     public IActionResult GetToDoById(int taskId)
     {
 
@@ -72,6 +82,7 @@ public class UserController : ControllerBase
         
     }
     [HttpPost]
+    [Route("todo")]
     public IActionResult AddNewTask([FromBody] Task task)
     {
         string? id = User.FindFirst("id")?.Value;
@@ -84,7 +95,7 @@ public class UserController : ControllerBase
         return Ok("task added succesfully!");
     }
     [HttpPut]
-    [Route("{taskId}")]
+    [Route("todo/{taskId}")]
     public IActionResult UpdateTask([FromBody] Task task,int taskId)
     {
         User? user = GetUserFromClaims();
@@ -102,7 +113,7 @@ public class UserController : ControllerBase
         return Ok(updatedTask);
     }
     [HttpDelete]
-    [Route("{taskId}")]
+    [Route("todo/{taskId}")]
     public IActionResult DeleteTask(int taskId)
     {
         User? user = GetUserFromClaims();
