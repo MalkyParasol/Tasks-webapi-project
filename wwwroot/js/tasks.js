@@ -3,10 +3,12 @@ let tasks = [];
 
 
 function getItems() {
+ console.log("beginning load");
   fetch(uri)
     .then((response) => response.json())
     .then((data) => _displayItems(data))
     .catch((error) => console.error("Unable to get items.", error));
+
 }
 
 function addItem() {
@@ -86,6 +88,7 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
+
   const tBody = document.getElementById("Tasks");
   tBody.innerHTML = "";
 
@@ -127,3 +130,4 @@ function _displayItems(data) {
 
 
 }
+

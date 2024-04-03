@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using MyTasks.Models;
 var builder = WebApplication.CreateBuilder(args);
 
+
 //authentication
 
 builder.Services.AddAuthentication(options => { options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; })
@@ -65,7 +66,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseDefaultFiles();
+
+
+app.UseDefaultFiles(new DefaultFilesOptions
+{
+    DefaultFileNames = new List<string> { "html/index.html" }
+});
 app.UseStaticFiles();
 
 app.UseHttpsRedirection();

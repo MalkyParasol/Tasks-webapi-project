@@ -7,11 +7,11 @@
   {
     "Id": 2,
     "Name": "Michal",
-    "Password": "3241"
+    "Password": "$argon2id$v=19$m=524288,t=8,p=1$Ep/MsUGnjqSinNcBUp2vrA$nKOU1vPiYGRIXG\u002B9jp2ptjDTxjQ6tX8wX4bTzRjrJz0"
   },
   {
     "Id": 3,
     "Name": "Ester",
-    "Password": "589885"
+    "Password": "$argon2id$v=19$m=524288,t=8,p=1$xybYPSIQgpUkDqq2IBEV1Q$01bgy\u002BxpXloRF/4\u002BAUnmm5FpHT0UPdP6/u7yVbc\u002B\u002BBE"
   }
 ]

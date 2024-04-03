@@ -51,6 +51,8 @@ public class AuthenticationController:ControllerBase
 
         var token = TasksTokenService.GetToken(claims);
 
+        HttpContext.Response.Headers.Add("ExpiresIn", ((int)token.ValidTo.Subtract(DateTime.Now).TotalSeconds).ToString());
+
         return new OkObjectResult(TasksTokenService.WriteToken(token));
     }
 }
