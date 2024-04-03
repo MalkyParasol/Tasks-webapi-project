@@ -35,8 +35,9 @@ public class AuthenticationController:ControllerBase
         Admin? admin = TasksTokenService.GetAdmins().Find(a => a.Name == person.Name && a.Password!=null && _passwordHasher.VerifyHashedPassword(a.Password,person.Password)== PasswordVerificationResult.Success);   
         if(admin!=null)
         {
+            
             claims.Add(new Claim("type", "Admin"));
-            claims.Add(new Claim("id", "1"));
+            claims.Add(new Claim("id","1"));
         }
         else
         {

@@ -5,12 +5,12 @@ const dom = {
 const uri = "/api/Login";
 let token = "";
 
-const loginUser=()=>{
+const loginUser=async()=>{
     const user={
         name:dom.name.value,
         password:dom.password.value,
     }
-    console.log(`user: ${user}`)
+    
     fetch(uri,{
         method:'POST',
         headers:{
@@ -24,9 +24,7 @@ const loginUser=()=>{
     .catch((error) => console.error("Unable to login", error));
 }
 const writeToken=(jwtToken)=>{
-    console.log(`jwt token: ${jwtToken}`)
     localStorage.setItem('token', jwtToken);
     window.location.href = '../html/index.html'; 
 }
-
 

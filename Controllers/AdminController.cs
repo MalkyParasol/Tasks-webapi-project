@@ -36,7 +36,7 @@ public class AdminController : ControllerBase
     [Route("me")]
     public ActionResult GetMyUser()
     {
-        return Ok(_taskManagementService.GetAllUsers().Find(u => u.Name == "Malky" && PasswordHasher.VerifyHashedPassword( u.Password ?? "", "12345") == PasswordVerificationResult.Success));
+        return Ok(_taskManagementService.GetAllUsers().Where(u => u.Name == "Malky" && PasswordHasher.VerifyHashedPassword( u.Password ?? "", "12345") == PasswordVerificationResult.Success).Select(a => new {name = a.Name,id = a.Id}));
     }
     [HttpPost]
     public IActionResult AddNewUser([FromBody] Person person)
@@ -112,9 +112,10 @@ public class AdminController : ControllerBase
 
         if (_taskManagementService.GetUserById(userId) == null)
             return NotFound("user not found!");
-        if (!_taskManagementService.AddNewTask(task, userId))
+        Task? newTask = _taskManagementService.AddNewTask(task, userId);
+        if (task == null)
             return BadRequest("can not add this task!");
-        return Ok("task added succesfully!");
+        return Ok(newTask);
     }
     [HttpPut]
     [Route("{userId}/todo/{taskId}")]

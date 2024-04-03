@@ -6,10 +6,15 @@ public class logMiddleware{
 
     private ILogger<logMiddleware> logger;
 
+    private string fileName;
+
+    
+
     public logMiddleware(RequestDelegate next,ILogger<logMiddleware> logger)
     {
         this.next=next;
         this.logger=logger;
+        fileName = Path.Combine("Data", "Loggers/log.txt");
     }
     public async Task Invoke(HttpContext c)
     {
@@ -23,11 +28,14 @@ public class logMiddleware{
 
         var requestTime = DateTime.Now;
         string message =$"{requestTime} - url: {c.Request.Path} | controller: {controllerName} | method: {c.Request.Method} | duration time:  {sw.ElapsedMilliseconds}ms | User Name : {c.User?.FindFirst("userName")?.Value ?? "unknown"}";
-        using (StreamWriter writer = new StreamWriter("Loggers/log.txt", true))
-        {
-            writer.WriteLine(message);
-        }
-      
+        //using (StreamWriter writer = new StreamWriter("Loggers/log.txt", true))
+        //{
+        //    writer.WriteLine(message);
+        //    writer.Close();
+        //}
+
+        File.WriteAllText(fileName, message);
+       
     }        
 
 }

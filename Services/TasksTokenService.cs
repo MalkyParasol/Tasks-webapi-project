@@ -44,7 +44,9 @@ namespace MyTasks.Services
                issuer,
                claims,
                expires: DateTime.Now.AddMonths(4),
-               //.Now.AddMinutes(1)
+               //.Now.AddMinutes(2),
+               
+               
                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
            );
 

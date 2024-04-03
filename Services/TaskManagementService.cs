@@ -87,11 +87,12 @@ public class TaskManagementService:ITaskManagementService
 
     }
 
-    public bool AddNewTask(Task task, int userId)
+    public Task? AddNewTask(Task task, int userId)
     {
+       
         User? currentUser = users.Find(u => u.Id == userId);
         if (currentUser == null)
-            return false;
+            return null;
         int id=0;
         if (currentUser.Tasks.Count != 0)
         {
@@ -110,7 +111,8 @@ public class TaskManagementService:ITaskManagementService
         }
 
         updateJson();
-        return true;
+        return task;
+        
     }
 
     public Task? UpdateTask(Task task, int userId,int taskId)

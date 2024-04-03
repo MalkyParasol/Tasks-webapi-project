@@ -47,7 +47,7 @@ public class UserController : ControllerBase
         {
             return NotFound("user not found");
         }
-        return Ok(user);
+        return Ok(new{id = user.Id, name = user.Name});
     }
 
     [HttpGet]
@@ -90,9 +90,10 @@ public class UserController : ControllerBase
         {
             return NotFound("user not found");
         }
-        if (!_taskManagementService.AddNewTask(task, int.Parse(id)))
+        Task? newTask = _taskManagementService.AddNewTask(task, int.Parse(id));
+        if (newTask == null )
             return BadRequest("can not add this task!");
-        return Ok("task added succesfully!");
+        return Ok(newTask);
     }
     [HttpPut]
     [Route("todo/{taskId}")]

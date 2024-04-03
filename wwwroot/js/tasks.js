@@ -1,10 +1,41 @@
-const uri = "/api";
+const expirationTime = localStorage.getItem("expirationTime");
+
+const checkTokenExpiration=()=> {
+  const now = Math.floor(Date.now()/1000);
+  if(expirationTime-now <= 60){
+    window.location.href = "../html/login";
+  }
+}
+const dom = {
+  title: document.getElementById("title"),
+}
+
 let tasks = [];
 
+function writeUserName(){
+  checkTokenExpiration();
+  fetch("/api/me",{
+    method:"GET",
+    headers:{
+      Accept: "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    }
+  })
+  .then((response)=> response.json())
+  .then((data) => dom.title.innerHTML = `Hello ${data.name}`)
+  .catch((error) => console.error("Unable to get user.", error));
+}
+writeUserName();
 
 function getItems() {
- console.log("beginning load");
-  fetch(uri)
+ checkTokenExpiration();
+  fetch("/api/todo",{
+    method:"GET",
+    headers:{
+      Accept: "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    }
+  })
     .then((response) => response.json())
     .then((data) => _displayItems(data))
     .catch((error) => console.error("Unable to get items.", error));
@@ -15,15 +46,16 @@ function addItem() {
   const addNameTextbox = document.getElementById("add-name");
 
   const item = {
+    id:0,
     isDone: false,
     name: addNameTextbox.value.trim(),
   };
 
-  fetch(uri, {
+  fetch("/api/todo", {
     method: "POST",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify(item),
   })
@@ -36,15 +68,20 @@ function addItem() {
     .catch((error) => console.error("Unable to add item.", error));
 }
 
-function deleteItem(id) {
-  fetch(`${uri}/${id}`, {
+function deleteItem(taskId) {
+  fetch(`/api/todo/${taskId}`, {
     method: "DELETE",
+    headers:{
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    }
+    
   })
     .then(() => getItems())
     .catch((error) => console.error("Unable to delete item.", error));
 }
 
 function displayEditForm(id) {
+  
   const item = tasks.find((item) => item.id === id);
 
   document.getElementById("edit-name").value = item.name;
@@ -54,18 +91,19 @@ function displayEditForm(id) {
 }
 
 function updateItem() {
-  const itemId = document.getElementById("edit-id").value;
+  const taskId = document.getElementById("edit-id").value;
   const item = {
-    id: parseInt(itemId, 10),
+    id: parseInt(taskId, 10),
     isDone: document.getElementById("edit-isDone").checked,
     name: document.getElementById("edit-name").value.trim(),
   };
 
-  fetch(`${uri}/${itemId}`, {
+  fetch(`/api/todo/${taskId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify(item),
   })
@@ -127,7 +165,5 @@ function _displayItems(data) {
   });
 
   tasks = data;
-
-
 }
 

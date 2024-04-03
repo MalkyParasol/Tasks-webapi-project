@@ -10,7 +10,7 @@ public interface ITaskManagementService
 
     User? AddNewUser(Person person);
 
-    bool AddNewTask(Task task, int userID);
+    Task? AddNewTask(Task task, int userID);
 
     Task? UpdateTask(Task task, int userId,int taskId);
 
