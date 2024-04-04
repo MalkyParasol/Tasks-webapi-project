@@ -19,7 +19,7 @@
         "IsDone": true
       },
       { "Id": 2, "Name": "do homework", "IsDone": true },
-      { "Id": 3, "Name": "Learning for Data Struct test", "IsDone": true },
+      { "Id": 3, "Name": "Learning for Data Struct test", "IsDone": false },
       { "Id": 4, "Name": "do homework", "IsDone": true },
       { "Id": 5, "Name": "wash dishes", "IsDone": false },
       { "Id": 6, "Name": "Orgenize", "IsDone": false },

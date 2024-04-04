@@ -8,6 +8,7 @@ const checkTokenExpiration=()=> {
 }
 const dom = {
   title: document.getElementById("title"),
+  adminDiv: document.getElementById("adminBtn"),
 }
 
 let tasks = [];
@@ -26,6 +27,32 @@ function writeUserName(){
   .catch((error) => console.error("Unable to get user.", error));
 }
 writeUserName();
+
+function drawAdminBtn(){
+  fetch("/api/type",{
+    method:"GET",
+    headers:{
+      Accept: "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    }
+  })
+  .then((response)=> response.json())
+  .then((data) =>{
+    if(data.type =="Admin")
+    {
+      let a = document.createElement("a");
+      a.href = "../html/users.html"
+      let btn = document.createElement("button");
+      btn.innerHTML = "watch all users";
+      a.appendChild(btn);
+      dom.adminDiv.appendChild(a);
+    }
+  })
+  .catch((error)=>console.error("unable to get user type",error))
+  
+}
+
+drawAdminBtn();
 
 function getItems() {
  checkTokenExpiration();

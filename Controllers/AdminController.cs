@@ -29,7 +29,7 @@ public class AdminController : ControllerBase
     [HttpGet]
     public ActionResult GetAllUsers(){
          
-        return Ok(_taskManagementService.GetAllUsers().Select(u => new { id = u.Id, name = u.Name, password = u.Password }).ToList());
+        return Ok(_taskManagementService.GetAllUsers().Select(u => new { id = u.Id, name = u.Name, tasks = u.Tasks }).ToList());
     }
 
     [HttpGet]

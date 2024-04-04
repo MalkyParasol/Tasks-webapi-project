@@ -39,6 +39,26 @@ public class UserController : ControllerBase
         return user;
     }
     [HttpGet]
+    [Route("type")]
+
+
+    public IActionResult getUserType()
+    {
+        string? type = User?.FindFirst("type")?.Value;
+        if(type == null)
+        {
+            return BadRequest("couldent find type");
+        }
+        if(type == "Admin")
+        {
+            return Ok(new {type = "Admin"});
+        }
+        else
+        {
+            return Ok(new { type = "User"});
+        }
+    }
+    [HttpGet]
     [Route("me")]
     public ActionResult GetUser()
     {
