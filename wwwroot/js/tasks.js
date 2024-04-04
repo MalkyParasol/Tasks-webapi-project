@@ -1,32 +1,11 @@
-const expirationTime = localStorage.getItem("expirationTime");
 
-const checkTokenExpiration=()=> {
-  const now = Math.floor(Date.now()/1000);
-  if(expirationTime-now <= 60){
-    window.location.href = "../html/login";
-  }
-}
 const dom = {
-  title: document.getElementById("title"),
   adminDiv: document.getElementById("adminBtn"),
 }
 
 let tasks = [];
 
-function writeUserName(){
-  checkTokenExpiration();
-  fetch("/api/me",{
-    method:"GET",
-    headers:{
-      Accept: "application/json",
-      "Authorization": `Bearer ${localStorage.getItem("token")}`,
-    }
-  })
-  .then((response)=> response.json())
-  .then((data) => dom.title.innerHTML = `Hello ${data.name}`)
-  .catch((error) => console.error("Unable to get user.", error));
-}
-writeUserName();
+writeUserName("The Tasks List Of");
 
 function drawAdminBtn(){
   fetch("/api/type",{
@@ -69,34 +48,32 @@ function getItems() {
 
 }
 
-function addItem() {
+// function displayEditForm(id) {
+  
+//   const item = tasks.find((item) => item.id === id);
+
+//   document.getElementById("edit-name").value = item.name;
+//   document.getElementById("edit-id").value = item.id;
+//   document.getElementById("edit-isDone").checked = item.isDone;
+//   document.getElementById("editForm").style.display = "block";
+// }
+
+function addItem_tasks(uri,getFunc)
+{
   const addNameTextbox = document.getElementById("add-name");
-
-  const item = {
-    id:0,
-    isDone: false,
-    name: addNameTextbox.value.trim(),
-  };
-
-  fetch("/api/todo", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify(item),
-  })
-    .then((response) => response.json())
-    .then(() => {
-      getItems();
-      addNameTextbox.value = "";
-      
-    })
-    .catch((error) => console.error("Unable to add item.", error));
+  addItem(uri,getFunc,addNameTextbox);
 }
 
-function deleteItem(taskId) {
-  fetch(`/api/todo/${taskId}`, {
+function updateItem_tasks(uri,getFunc)
+{
+   const taskId = document.getElementById("edit-id").value;
+   const isDone=document.getElementById("edit-isDone").checked;
+   const name= document.getElementById("edit-name").value.trim();
+   updateItem(uri,getFunc,taskId,isDone,name);
+}
+function deleteItem(taskId,uri) {
+  //const uri = "/api/todo";
+  fetch(`${uri}/${taskId}`, {
     method: "DELETE",
     headers:{
       "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -107,44 +84,6 @@ function deleteItem(taskId) {
     .catch((error) => console.error("Unable to delete item.", error));
 }
 
-function displayEditForm(id) {
-  
-  const item = tasks.find((item) => item.id === id);
-
-  document.getElementById("edit-name").value = item.name;
-  document.getElementById("edit-id").value = item.id;
-  document.getElementById("edit-isDone").checked = item.isDone;
-  document.getElementById("editForm").style.display = "block";
-}
-
-function updateItem() {
-  const taskId = document.getElementById("edit-id").value;
-  const item = {
-    id: parseInt(taskId, 10),
-    isDone: document.getElementById("edit-isDone").checked,
-    name: document.getElementById("edit-name").value.trim(),
-  };
-
-  fetch(`/api/todo/${taskId}`, {
-    method: "PUT",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify(item),
-  })
-    .then(() => getItems())
-    .catch((error) => console.error("Unable to update item.", error));
-
-  closeInput();
-
-  return false;
-}
-
-function closeInput() {
-  document.getElementById("editForm").style.display = "none";
-}
 
 function _displayCount(itemCount) {
   const name = itemCount === 1 ? "Task" : "Task kinds";
@@ -167,13 +106,21 @@ function _displayItems(data) {
     isDonebox.disabled = true;
     isDonebox.checked = item.isDone;
 
-    let editButton = button.cloneNode(false);
+    let editButton = document.createElement('button')
+    //let editButton = button.cloneNode(false);
     editButton.innerText = "Edit";
-    editButton.setAttribute("onclick", `displayEditForm(${item.id})`);
+    editButton.addEventListener("click",()=>{
+      document.getElementById("edit-name").value = item.name;
+     document.getElementById("edit-id").value = item.id;
+     document.getElementById("edit-isDone").checked = item.isDone;
+     document.getElementById("editForm").style.display = "block";
+    })
+    //editButton.setAttribute("onclick", `displayEditForm(${item.id})`);
 
     let deleteButton = button.cloneNode(false);
     deleteButton.innerText = "Delete";
-    deleteButton.setAttribute("onclick", `deleteItem(${item.id})`);
+    //deleteButton.setAttribute("onclick", `deleteItem(${item.id})`);
+    deleteButton.setAttribute("onclick", `deleteItem(${item.id}, '/api/todo')`);
 
     let tr = tBody.insertRow();
 

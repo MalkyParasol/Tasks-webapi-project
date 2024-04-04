@@ -40,8 +40,6 @@ public class UserController : ControllerBase
     }
     [HttpGet]
     [Route("type")]
-
-
     public IActionResult getUserType()
     {
         string? type = User?.FindFirst("type")?.Value;

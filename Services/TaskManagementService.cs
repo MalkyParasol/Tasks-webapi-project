@@ -15,16 +15,16 @@ public class TaskManagementService:ITaskManagementService
         fileName = Path.Combine("Data", "usersList.json");
         AccessUsers();
     }
-    private void WriteErrorLog(string message)
-    {
-        if (!string.IsNullOrEmpty(message))
-        {
-            using (StreamWriter writer = new StreamWriter("Loggers/errors.txt",true))
-            {
-                writer.WriteLine(message);
-            }
-        }
-    }
+    // private void WriteErrorLog(string message)
+    // {
+    //     if (!string.IsNullOrEmpty(message))
+    //     {
+    //         using (StreamWriter writer = new StreamWriter("Loggers/errors.txt",true))
+    //         {
+    //             writer.WriteLine(message);
+    //         }
+    //     }
+    // }
     private void AccessUsers()
     {
         try
@@ -39,7 +39,8 @@ public class TaskManagementService:ITaskManagementService
         } 
         catch (Exception ex)
         {
-            WriteErrorLog($"Error loading user data: {ex.Message}");
+            Console.WriteLine(ex);
+            //WriteErrorLog($"Error loading user data: {ex.Message}");
             users = new List<User>();
         }
        
@@ -55,7 +56,8 @@ public class TaskManagementService:ITaskManagementService
         }
         catch(Exception ex)
         {
-            WriteErrorLog($"Error saving user data: {ex.Message}");
+            System.Console.WriteLine(ex);
+            //WriteErrorLog($"Error saving user data: {ex.Message}");
         }  
         
     }
@@ -93,14 +95,19 @@ public class TaskManagementService:ITaskManagementService
         User? currentUser = users.Find(u => u.Id == userId);
         if (currentUser == null)
             return null;
-        int id=0;
-        if (currentUser.Tasks.Count != 0)
-        {
-            id = currentUser.Tasks.Max(t => t.Id);
-        }
-            
-        
-        task.Id = id + 1;
+
+        //int id = 0;
+        //if (currentUser.Tasks.Count != 0)
+        //{
+        //    var tasksCopy = currentUser.Tasks.ToList(); // Create a copy to avoid modification issues
+        //    id = tasksCopy.Max(t => t.Id); // Use the copy for enumeration
+        //    //id = currentUser.Tasks.Max(t => t.Id);
+        //}
+
+
+        //task.Id = id + 1;
+        //task.Id =int.Parse( Guid.NewGuid().ToString());
+        //task.Id = Guid.NewGuid().ToString()
         currentUser.Tasks.Add(task);
         foreach (var user in users)
         {
@@ -145,7 +152,8 @@ public class TaskManagementService:ITaskManagementService
         }
         catch (Exception ex)
         {
-            WriteErrorLog($"Error deleting user: {ex.Message}");
+            System.Console.WriteLine(ex);
+           // WriteErrorLog($"Error deleting user: {ex.Message}");
             return false;
         }
     }
