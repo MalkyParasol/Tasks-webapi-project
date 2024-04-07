@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task CRUD</title>
-    <link rel="stylesheet" href="../css/site.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
     <h1 id="title"></h1>
-    <div id="usersDiv">
-        
+    <div id="add-user">
+      <button onclick="displayNewUserForm()">addUser</button>
+      <form action=""  style="display: none;" id="newUserForm">
+        <label for="" >user name:</label>
+        <input type="text" id="newUserName" />
+        <label for="">user password</label>
+        <input  type="password" id="password" />
+        <label for="" >confirm user password</label>
+        <input  type="password" id="confirmPassword" />
+        <button id="add-new-user-btn" onclick="addNewUser()" type="submit">add new user</button>
+      </form>
+      
     </div>
-</body>
-<script src="../js/utils.js"></script>
-<script src="../js/users.js"></script>
-<script type="text/javascript">
+    <div id="usersDiv"></div>
+  </body>
+  <script src="../js/utils.js"></script>
+  <script src="../js/users2.js"></script>
+  <script type="text/javascript">
     getUsers();
-</script>
+  </script>
 </html>

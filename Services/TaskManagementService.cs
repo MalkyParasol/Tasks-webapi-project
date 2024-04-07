@@ -96,16 +96,16 @@ public class TaskManagementService:ITaskManagementService
         if (currentUser == null)
             return null;
 
-        //int id = 0;
-        //if (currentUser.Tasks.Count != 0)
-        //{
+        int id = 0;
+        if (currentUser.Tasks.Count != 0)
+        {
         //    var tasksCopy = currentUser.Tasks.ToList(); // Create a copy to avoid modification issues
         //    id = tasksCopy.Max(t => t.Id); // Use the copy for enumeration
-        //    //id = currentUser.Tasks.Max(t => t.Id);
-        //}
+           id = currentUser.Tasks.Max(t => t.Id);
+        }
 
 
-        //task.Id = id + 1;
+        task.Id = id + 1;
         //task.Id =int.Parse( Guid.NewGuid().ToString());
         //task.Id = Guid.NewGuid().ToString()
         currentUser.Tasks.Add(task);

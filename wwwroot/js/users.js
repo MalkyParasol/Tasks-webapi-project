@@ -1,7 +1,58 @@
 const dom = {
   usersDiv: document.getElementById("usersDiv"),
+  newUserForm : document.getElementById("newUserForm"),
+  newUserName:document.getElementById("newUserName"),
+  newUserPassword:document.getElementById("password"),
+  confirmNewUserPassword:document.getElementById("confirmPassword")
 };
 writeUserName("Hello To Administrator");
+function displayNewUserForm(){
+    newUserForm.style.display="block";
+}
+function addNewUser()
+{
+
+    if(dom.newUserName.value ==='' || dom.newUserPassword === '' || confirmNewUserPassword === '')
+    {
+        debugger
+        alert("Please fill in all fields");
+        debugger
+        displayNewUserForm();
+    }
+    else if(dom.newUserPassword.value != dom.confirmNewUserPassword.value)
+    {
+        debugger
+        alert("Password verification failed, try again");
+        debugger
+        displayNewUserForm();
+    }
+    else{
+        const user = {
+            id: 8,
+            tasks:[],
+            name:dom.newUserName.value,
+            password:dom.newUserPassword.value,
+        }
+        debugger
+        fetch(`/api/user`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            body: JSON.stringify(user),
+          })
+            .then((response) => response.json())
+            .then((newUser) => {
+              debugger
+              users.push(newUser);
+              debugger
+              window.location.reload();
+            })
+            .catch((error) => console.error("Unable to add item.", error));
+        
+    }
+}
 
 let users = [];
 
@@ -15,212 +66,311 @@ function getUsers() {
     },
   })
     .then((response) => response.json())
-    .then((data) => displayUsers(data))
+    .then((data) => {
+      users = data;
+      drawUsersDetails();
+    })
     .catch((error) => console.error("Unable to get items.", error));
 }
 
-const displayUsers = (usersList) => {
-  usersList.forEach((user) => {
+function drawUsersDetails() {
+  users.forEach((user) => {
     let userContent = document.createElement("div");
-    userContent.id = "userConent";
+    userContent.id = "userContent";
+    drawUserTitle(userContent, user);
 
-    let title = document.createElement("h3");
-    title.innerHTML = `The Tasks List Of ${user.name}`;
-    title.id = "userTitle";
-    userContent.appendChild(title);
+    let [addForm, taskToAdd] = drawAddForm(userContent);
+    let [editFormDiv, editForm, id, isDone, taskName, submitEdit, closeBtn] =
+      drawEditForm(userContent);
+    let tasksAmount = drawCounter(userContent, user);
 
-    let addTitle = document.createElement("h5");
-    addTitle.innerHTML = "Add";
-    userContent.appendChild(addTitle);
-
-    let addForm = document.createElement("form");
-    addForm.action = "javascript:void(0);";
-    addForm.method = "POST";
-
-    let newTask = document.createElement("input");
-    newTask.type = "text";
-    newTask.id = "add-name";
-    newTask.placeholder = "New Task";
-    addForm.appendChild(newTask);
-
-    let add = document.createElement("input");
-    add.type = "submit";
-    add.value = "Add";
-    addForm.appendChild(add);
-
-    addForm.onsubmit = addItem.bind(
-      addForm,
-      `/api/user/${user.id}/todo`,
-      reload,
-      newTask
-    );
-
-    userContent.appendChild(addForm);
-    let editContent = document.createElement("div");
-    editContent.id = "edit-form";
-    let editTitle = document.createElement("h5");
-    editTitle.innerHTML = "Edit";
-    editContent.appendChild(editTitle);
-
-    let form = document.createElement("form");
-    form.action = "javascript:void(0);";
-    let editId = document.createElement("input");
-    editId.type = "hidden";
-    editId.id = "edit-id";
-    form.appendChild(editId);
-
-    let editIsDone = document.createElement("input");
-    editIsDone.type = "checkbox";
-    editIsDone.id = "edit-isDone";
-    form.appendChild(editIsDone);
-
-    let editName = document.createElement("input");
-    editName.type = "text";
-    editName.id = "edit-name";
-    form.appendChild(editName);
-
-    let save = document.createElement("input");
-    save.type = "submit";
-    save.value = "Save";
-    form.appendChild(save);
-
-    let a = document.createElement("a");
-    a.addEventListener("click",()=>{
-      editContent.style.display="none";
-    })
-    //a.onclick = closeInput.bind(a);
-    a.ariaLabel = "Close";
-    a.innerHTML = "&#10006;";
-    form.appendChild(a);
-
-    form.onsubmit = updateItem.bind(
-      form,
-      `api/user/${user.id}/todo`,
-      reload,
-      editId.value,
-      editIsDone.checked,
-      editName.value.trim()
-    );
-    editContent.appendChild(form);
-    userContent.appendChild(editContent);
-
-    let counter = document.createElement("p");
-    counter.id = "counter";
-    const name = user.tasks.length === 1 ? "Task" : "Task kinds";
-    counter.innerHTML = `${user.tasks.length} ${name}`;
-    userContent.appendChild(counter);
     let table = document.createElement("table");
-    let tr = document.createElement("tr");
-    let th1 = document.createElement("th");
-    th1.innerHTML = "Is Done?";
-    tr.appendChild(th1);
-    let th2 = document.createElement("th");
-    th2.innerHTML = "Name";
-    tr.appendChild(th2);
-    let th3 = document.createElement("th");
-    tr.appendChild(th3);
-    let th4 = document.createElement("th");
-    tr.appendChild(th4);
-    table.appendChild(tr);
-    let tbody = document.createElement("tbody");
-    tbody.id = "Tasks";
-    user.tasks.forEach(task => {
-      let trTask = document.createElement("tr");
-      let tdIsDone = document.createElement("td");
-      let isDoneTask = document.createElement("input");
-      isDoneTask.type = "checkbox";
-      isDoneTask.checked = task.isDone;
-      isDoneTask.disabled=true;
-      tdIsDone.appendChild(isDoneTask);
-      trTask.appendChild(tdIsDone);
-      let tdName = document.createElement("td");
-      tdName.innerHTML = task.name;
-      trTask.appendChild(tdName);
-      let tdEdit = document.createElement("td");
-      let editBtn = document.createElement("button");
-      editBtn.addEventListener("click",()=>{
-        editContent.style.display = "block";
-        editName.value=task.name;
-        editId.value = task.id;
-        editIsDone.checked=task.isDone;
-        
+    let tableHead = drawHeadTabel(table);
+    let tableBody = document.createElement("tbody");
+    addForm.addEventListener("submit", () => {
+      const item = {
+        id: 0,
+        isDone: false,
+        name: taskToAdd.value,
+      };
+
+      fetch(`/api/user/${user.id}/todo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(item),
       })
-      editBtn.innerHTML="Edit";
-      tdEdit.appendChild(editBtn);
-      trTask.appendChild(tdEdit);
-      let tdDelete = document.createElement("td");
-      let deleteBtn = document.createElement("button");
-      deleteBtn.addEventListener("click",()=>{
-        deleteItem(task.id,user.id);
-      })
-      deleteBtn.innerHTML="Delete";
-      tdDelete.appendChild(deleteBtn);
-      trTask.appendChild(tdDelete);
-      tbody.appendChild(trTask);
+        .then((response) => response.json())
+        .then((newTask) => {
+          drawSingleTask(tableBody, newTask);
+          user.tasks.push(newTask);
+          taskToAdd.value = "";
+          window.location.reload();
+        })
+        .catch((error) => console.error("Unable to add item.", error));
     });
-    
-
-    table.appendChild(tbody);
+    user.tasks.forEach((task) => {
+      let [isDoneInput, td2, editBtn, deleteBtn] = drawSingleTask(
+        tableBody,
+        task
+      );
+      editBtn.addEventListener("click", () => {
+        editFormDiv.style.display = "block";
+        id.innerHTML = task.id;
+        isDone.checked = task.isDone;
+        taskName.value = task.name;
+      });
+      deleteBtn.addEventListener("click", () => {
+        fetch(`/api/user/${user.id}/todo/${task.id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+          .then((response) => {
+            if (response.ok) {
+              for (const row of tableBody.children) {
+                if (row.id == task.id) {
+                  user.tasks = user.tasks.filter((t) => t.id != task.id);
+                  alert("task deletd succcesfuly");
+                  tableBody.removeChild(row);
+                  break;
+                }
+              }
+            } else {
+              alert("cannot delete this task");
+            }
+          })
+          .catch((error) => console.error("Unable to delete item.", error));
+      });
+    });
+    table.appendChild(tableBody);
     userContent.appendChild(table);
-
-    dom.usersDiv.appendChild(userContent);
+    usersDiv.appendChild(userContent);
+    closeBtn.addEventListener("click", () => {
+      editFormDiv.style.display = "none";
+    });
+    closeBtn.addEventListener("mouseover", () => {
+      closeBtn.style.cursor = "pointer";
+    });
+    editForm.addEventListener("submit", () => {
+      const item = {
+        id: id.innerHTML,
+        isDone: isDone.checked,
+        name: taskName.value,
+      };
+      fetch(`/api/user/${user.id}/todo/${id.innerHTML}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(item),
+      })
+        .then((response) => response.json())
+        .then((newTask) => {
+          for (const row of tableBody.children) {
+            if (row.id == newTask.id) {
+              const checkbox = row.querySelector('#td1 input[type="checkbox"]');
+              const td2 = row.querySelector("#td2");
+              checkbox.checked = newTask.isDone;
+              td2.innerHTML = newTask.name;
+            }
+          }
+          const taskIndex = user.tasks.findIndex(
+            (task) => task.id == newTask.id
+          );
+          user.tasks[taskIndex].name = newTask.name;
+          user.tasks[taskIndex].isDone = newTask.isDone;
+          console.log(users);
+          editFormDiv.style.display = "none";
+        })
+        .catch((error) => console.error("Unable to update item.", error));
+    });
+    drawRemoveUsers(userContent, user);
   });
-};
-function reload() {
-  dom.usersDiv.innerHTML = "";
-  window.location.reload();
 }
 
-function deleteItem(userId, taskId) {
-  fetch(`api/user/${userId}/todo/${taskId}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  })
-    .then(() => reload())
-    .catch((error) => console.error("Unable to delete item.", error));
+function drawUserTitle(root, user) {
+  let h3 = document.createElement("h3");
+  h3.id = "userTitle";
+  h3.innerHTML = `The Tasks List of: ${user.name}`;
+  root.appendChild(h3);
 }
-// //////
-// function _displayItems(data) {
+function drawAddForm(root) {
+  let h5 = document.createElement("h5");
+  h5.innerHTML = "Add";
+  root.appendChild(h5);
 
-//   //const tBody = document.getElementById("Tasks");
-//   //tBody.innerHTML = "";
+  let form = document.createElement("form");
+  form.id = "addForm";
+  form.action = "javascript:void(0);";
+  form.method = "POST";
 
-//   //_displayCount(data.length);
+  let taskName = document.createElement("input");
+  taskName.type = "text";
+  taskName.id = "add-name";
+  taskName.placeholder = "New Task";
 
-//   //const button = document.createElement("button");
+  let taskSubmit = document.createElement("input");
+  taskSubmit.type = "submit";
+  taskSubmit.value = "Add";
 
-//   data.forEach((item) => {
-//     //let isDonebox = document.createElement("input");
-//     //isDonebox.type = "checkbox";
-//     //isDonebox.disabled = true;
-//     //isDonebox.checked = item.isDone;
+  form.appendChild(taskName);
+  form.appendChild(taskSubmit);
+  root.appendChild(form);
 
-//     let editButton = button.cloneNode(false);
-//     editButton.innerText = "Edit";
-//     editButton.setAttribute("onclick", `displayEditForm(${item.id})`);
+  return [form, taskName];
+}
+function drawEditForm(root) {
+  let editFormDiv = document.createElement("div");
+  editFormDiv.id = "edit-form-div";
+  editFormDiv.style.display = "none";
 
-//     let deleteButton = button.cloneNode(false);
-//     deleteButton.innerText = "Delete";
-//     //deleteButton.setAttribute("onclick", `deleteItem(${item.id})`);
-//     deleteButton.setAttribute("onclick", `deleteItem(${item.id}, '/api/todo')`);
+  let h5 = document.createElement("h5");
+  h5.innerHTML = "Edit";
+  editFormDiv.appendChild(h5);
 
-//     let tr = tBody.insertRow();
+  let form = document.createElement("form");
+  form.id = "editForm";
+  form.action = "javascript:void(0);";
+  form.method = "PUT";
 
-//     let td1 = tr.insertCell(0);
-//     td1.appendChild(isDonebox);
+  let id = document.createElement("p");
+  id.style.display = "none";
+  id.id = "edit-id";
 
-//     let td2 = tr.insertCell(1);
-//     let textNode = document.createTextNode(item.name);
-//     td2.appendChild(textNode);
+  let isDone = document.createElement("input");
+  isDone.type = "checkbox";
 
-//     let td3 = tr.insertCell(2);
-//     td3.appendChild(editButton);
+  let taskName = document.createElement("input");
+  taskName.type = "text";
+  taskName.id = "edit-name";
 
-//     let td4 = tr.insertCell(3);
-//     td4.appendChild(deleteButton);
-//   });
+  let submitEdit = document.createElement("input");
+  submitEdit.type = "submit";
+  submitEdit.value = "Save";
 
-//   tasks = data;
-// }
+  let a = document.createElement("a");
+  a.ariaLabel = "Close";
+  a.innerHTML = "&#10006;";
+
+  form.appendChild(id);
+  form.appendChild(isDone);
+  form.appendChild(taskName);
+  form.appendChild(submitEdit);
+  form.appendChild(a);
+  editFormDiv.appendChild(form);
+  root.appendChild(editFormDiv);
+
+  return [editFormDiv, form, id, isDone, taskName, submitEdit, a];
+}
+function drawCounter(root, user) {
+  let p = document.createElement("p");
+  p.id = "counter";
+  let amount = user.tasks.length;
+  p.innerHTML = `${amount} ${amount === 1 ? "Task" : "Task kinds"}`;
+  root.appendChild(p);
+
+  return p;
+}
+function drawHeadTabel(table) {
+  let tbody = document.createElement("tbody");
+  let tr = document.createElement("tr");
+  let th1 = document.createElement("th");
+  th1.innerHTML = "Is Done?";
+  let th2 = document.createElement("th");
+  th2.innerHTML = "Name";
+  let th3 = document.createElement("th");
+  let th4 = document.createElement("th");
+  tr.appendChild(th1);
+  tr.appendChild(th2);
+  tr.appendChild(th3);
+  tr.appendChild(th4);
+  tbody.appendChild(tr);
+  table.appendChild(tbody);
+  return tbody;
+}
+function drawSingleTask(tbody, task) {
+  let tr = document.createElement("tr");
+  tr.id = task.id;
+  let td1 = document.createElement("td");
+  td1.id = "td1";
+  let isDoneInput = document.createElement("input");
+  isDoneInput.type = "checkBox";
+  isDoneInput.checked = task.isDone;
+  isDoneInput.disabled = true;
+  td1.appendChild(isDoneInput);
+  let td2 = document.createElement("td");
+  td2.id = "td2";
+  td2.innerHTML = task.name;
+  let td3 = document.createElement("td");
+  td3.id = "td3";
+  let editBtn = document.createElement("button");
+  editBtn.innerHTML = "Edit";
+  td3.appendChild(editBtn);
+  let td4 = document.createElement("td");
+  td4.id = "td4";
+  let deleteBtn = document.createElement("button");
+  deleteBtn.innerHTML = "Delete";
+  td4.appendChild(deleteBtn);
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tr.appendChild(td3);
+  tr.appendChild(td4);
+  tbody.appendChild(tr);
+  return [isDoneInput, td2, editBtn, deleteBtn];
+}
+
+function drawRemoveUsers(userContent, user) {
+  let btn = document.createElement("button");
+  btn.id = "remove-user";
+  btn.innerHTML = "deleteUser";
+
+  btn.onclick = () => {
+    let div = document.createElement("div");
+    div.id = "delete-message";
+
+    let p = document.createElement("p");
+    p.innerHTML = `are you shure that you want to delete user: ${user.name}?`;
+
+    let btnYes = document.createElement("button");
+    btnYes.id = "btnYes";
+    btnYes.innerHTML = "Yes";
+    btnYes.onclick = () => {
+      fetch(`/api/user/${user.id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            users.filter((u) => u.id != user.id);
+            alert("user deleted succesfully!");
+            window.location.reload();
+          } else {
+            alert("cannot delete this user!");
+            window.location.reload();
+          }
+        })
+        .catch((error) => console.error("Unable to delete item.", error));
+    };
+
+    let btnNo = document.createElement("button");
+    btnNo.id = btnNo;
+    btnNo.innerHTML = "No";
+    btnNo.onclick = () => {
+      div.style.display = "none";
+    };
+
+    div.appendChild(p);
+    div.appendChild(btnYes);
+    div.appendChild(btnNo);
+    userContent.appendChild(div);
+  };
+  userContent.appendChild(btn);
+}

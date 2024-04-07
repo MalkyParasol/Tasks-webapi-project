@@ -20,7 +20,7 @@ function drawAdminBtn(){
     if(data.type =="Admin")
     {
       let a = document.createElement("a");
-      a.href = "../html/users.html"
+      a.href = "../html/users2.html"
       let btn = document.createElement("button");
       btn.innerHTML = "watch all users";
       a.appendChild(btn);
