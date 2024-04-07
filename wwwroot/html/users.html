@@ -6,24 +6,32 @@
     <title>Document</title>
   </head>
   <body>
-    <h1 id="title"></h1>
+    <h1 id="userTitle"></h1>
+    <div id="adminBtn">
+       
+    </div>
     <div id="add-user">
       <button onclick="displayNewUserForm()">addUser</button>
-      <form action=""  style="display: none;" id="newUserForm">
+      <form id="newUserForm" style="display: none;">
         <label for="" >user name:</label>
         <input type="text" id="newUserName" />
         <label for="">user password</label>
         <input  type="password" id="password" />
         <label for="" >confirm user password</label>
         <input  type="password" id="confirmPassword" />
-        <button id="add-new-user-btn" onclick="addNewUser()" type="submit">add new user</button>
+        <button id="add-new-user-btn"  type="submit">add new user</button>
       </form>
       
     </div>
     <div id="usersDiv"></div>
+    <div id="adminBtn">
+       <a href="./tasks.html">
+          <button>watch your tasks</button>
+       </a>
+    </div>
   </body>
   <script src="../js/utils.js"></script>
-  <script src="../js/users2.js"></script>
+  <script src="../js/users.js"></script>
   <script type="text/javascript">
     getUsers();
   </script>

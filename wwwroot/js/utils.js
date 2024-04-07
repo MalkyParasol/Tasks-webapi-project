@@ -1,3 +1,6 @@
+const utilsDom = {
+  title: document.getElementById("userTitle"),
+}
 const expirationTime = localStorage.getItem("expirationTime");
 
 const checkTokenExpiration=()=> {
@@ -6,10 +9,39 @@ const checkTokenExpiration=()=> {
     window.location.href = "../html/login";
   }
 }
-
-const utilsDom = {
-    title: document.getElementById("title"),
+function drawSingleTask(tbody, task) {
+    let tr = document.createElement("tr");
+    tr.id = task.id;
+    let td1 = document.createElement("td");
+    td1.id = "td1";
+    let isDoneInput = document.createElement("input");
+    isDoneInput.type = "checkBox";
+    isDoneInput.checked = task.isDone;
+    isDoneInput.disabled = true;
+    td1.appendChild(isDoneInput);
+    let td2 = document.createElement("td");
+    td2.id = "td2";
+    td2.innerHTML = task.name;
+    let td3 = document.createElement("td");
+    td3.id = "td3";
+    let editBtn = document.createElement("button");
+    editBtn.innerHTML = "Edit";
+    td3.appendChild(editBtn);
+    let td4 = document.createElement("td");
+    td4.id = "td4";
+    let deleteBtn = document.createElement("button");
+    deleteBtn.innerHTML = "Delete";
+    td4.appendChild(deleteBtn);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    tbody.appendChild(tr);
+    return [isDoneInput, td2, editBtn, deleteBtn];
 }
+
+
+
 
 function writeUserName(preliminaryText){
     checkTokenExpiration();
@@ -23,77 +55,4 @@ function writeUserName(preliminaryText){
     .then((response)=> response.json())
     .then((data) => utilsDom.title.innerHTML = `${preliminaryText} ${data.name}`)
     .catch((error) => console.error("Unable to get user.", error));
-}
-
-function addItem(uri,getFunc,addNameTextbox) {
-    //const addNameTextbox = document.getElementById("add-name");
-  
-    const item = {
-      id:0,
-      isDone: false,
-      name: addNameTextbox.value.trim(),
-    };
-  
-    fetch(uri, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(item),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        getFunc();
-        addNameTextbox.value = "";
-        
-      })
-      .catch((error) => console.error("Unable to add item.", error));
-}
-
-// function deleteItem(uri,taskId,getFunc){
-   
-//   console.log(`uri: ${uri}, taskId : ${taskId}, getFunc : ${getFunc}`);
-//   fetch(`api/todo/${Number(taskId)}`, {
-//     method: "DELETE",
-//     headers:{
-//       Accept: "application/json",
-//       "Content-Type": "application/json",
-//       "Authorization": `Bearer ${localStorage.getItem("token")}`,
-//     }
-    
-//   })
-//     .then(() => getFunc())
-//     .catch((error) => console.error("Unable to delete item.", error));
-// }
-
-function updateItem(uri,getFunc,taskId,isDone,name) {
-  //const taskId = document.getElementById("edit-id").value;
-  const item = {
-    id: parseInt(taskId, 10),
-    isDone,
-    name,
-    //isDone: document.getElementById("edit-isDone").checked,
-    //name: document.getElementById("edit-name").value.trim(),
-  };
-
-  fetch(`${uri}/${taskId}`, {
-    method: "PUT",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify(item),
-  })
-    .then(() => getFunc())
-    .catch((error) => console.error("Unable to update item.", error));
-
-  closeInput();
-
-  return false;
-}
-
-function closeInput() {
-  document.getElementById("editForm").style.display = "none";
 }

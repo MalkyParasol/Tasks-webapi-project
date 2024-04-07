@@ -3,28 +3,23 @@ const dom = {
   newUserForm : document.getElementById("newUserForm"),
   newUserName:document.getElementById("newUserName"),
   newUserPassword:document.getElementById("password"),
-  confirmNewUserPassword:document.getElementById("confirmPassword")
+  confirmNewUserPassword:document.getElementById("confirmPassword"),
+  addNewUserBtn: document.getElementById("add-new-user-btn"),
 };
 writeUserName("Hello To Administrator");
 function displayNewUserForm(){
-    newUserForm.style.display="block";
+  dom.newUserForm.style.display = "block";
 }
-function addNewUser()
-{
-
-    if(dom.newUserName.value ==='' || dom.newUserPassword === '' || confirmNewUserPassword === '')
+dom.addNewUserBtn.onclick=(event)=>{
+  event.preventDefault();
+    if(dom.newUserName.value ==='' || dom.newUserPassword === '' || dom.confirmNewUserPassword === '')
     {
-        debugger
         alert("Please fill in all fields");
-        debugger
-        displayNewUserForm();
+        newUserForm.style.display="block";
     }
     else if(dom.newUserPassword.value != dom.confirmNewUserPassword.value)
     {
-        debugger
         alert("Password verification failed, try again");
-        debugger
-        displayNewUserForm();
     }
     else{
         const user = {
@@ -33,7 +28,6 @@ function addNewUser()
             name:dom.newUserName.value,
             password:dom.newUserPassword.value,
         }
-        debugger
         fetch(`/api/user`, {
             method: "POST",
             headers: {
@@ -44,9 +38,8 @@ function addNewUser()
           })
             .then((response) => response.json())
             .then((newUser) => {
-              debugger
               users.push(newUser);
-              debugger
+              alert("User successfully added")
               window.location.reload();
             })
             .catch((error) => console.error("Unable to add item.", error));
@@ -87,6 +80,7 @@ function drawUsersDetails() {
     let table = document.createElement("table");
     let tableHead = drawHeadTabel(table);
     let tableBody = document.createElement("tbody");
+    tableBody.id  = "tableBody";
     addForm.addEventListener("submit", () => {
       const item = {
         id: 0,
@@ -245,6 +239,7 @@ function drawEditForm(root) {
 
   let isDone = document.createElement("input");
   isDone.type = "checkbox";
+  isDone.id = "edit-isDone";
 
   let taskName = document.createElement("input");
   taskName.type = "text";
@@ -294,37 +289,6 @@ function drawHeadTabel(table) {
   table.appendChild(tbody);
   return tbody;
 }
-function drawSingleTask(tbody, task) {
-  let tr = document.createElement("tr");
-  tr.id = task.id;
-  let td1 = document.createElement("td");
-  td1.id = "td1";
-  let isDoneInput = document.createElement("input");
-  isDoneInput.type = "checkBox";
-  isDoneInput.checked = task.isDone;
-  isDoneInput.disabled = true;
-  td1.appendChild(isDoneInput);
-  let td2 = document.createElement("td");
-  td2.id = "td2";
-  td2.innerHTML = task.name;
-  let td3 = document.createElement("td");
-  td3.id = "td3";
-  let editBtn = document.createElement("button");
-  editBtn.innerHTML = "Edit";
-  td3.appendChild(editBtn);
-  let td4 = document.createElement("td");
-  td4.id = "td4";
-  let deleteBtn = document.createElement("button");
-  deleteBtn.innerHTML = "Delete";
-  td4.appendChild(deleteBtn);
-  tr.appendChild(td1);
-  tr.appendChild(td2);
-  tr.appendChild(td3);
-  tr.appendChild(td4);
-  tbody.appendChild(tr);
-  return [isDoneInput, td2, editBtn, deleteBtn];
-}
-
 function drawRemoveUsers(userContent, user) {
   let btn = document.createElement("button");
   btn.id = "remove-user";

@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task CRUD</title>
-    <link rel="stylesheet" href="../css/site.css">
+    <title>Document</title>
 </head>
 <body id="userContent">
-    <h1 id="title"></h1>
+    <h1 id="userTitle"></h1>
     <h3>Add</h3>
-    <form action="javascript:void(0);" method="POST"   onsubmit="addItem_tasks(`/api/todo/`,getItems)">
-      
+    <form id="addForm" action="javascript:void(0);" method="POST">
         <input type="text" id="add-name" placeholder="New Task">
         <input type="submit" value="Add">
     </form>
     
-    <div id="editForm">
+    <div id="edit-form-div" style="display: none;">
         <h3>Edit</h3>
-        <form action="javascript:void(0);" onsubmit="updateItem_tasks(`/api/todo`,getItems)">
-            <input type="hidden" id="edit-id">
+        <form id="editForm" action="javascript:void(0);" method="PUT" >
+            <p id="edit-id" style="display: none;"></p>
             <input type="checkbox" id="edit-isDone">
             <input type="text" id="edit-name">
             <input type="submit" value="Save">
-            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            <a aria-label="Close" style="cursor: pointer;" id="closeBtn">&#10006;</a>
         </form>
     </div>
 
     <p id="counter"></p>
 
     <table>
-        <tr>
-            <th>Is Done?</th>
-            <th>Name</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tbody id="Tasks"></tbody>
+        <tbody>
+            <tr>
+                <th>Is Done?</th>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tbody>
+    <tbody id="tableBody"></tbody>
     </table>
     <div id="adminBtn">
        
@@ -43,9 +43,8 @@
 
 </body>
 <script src="../js/utils.js"></script>
-<script src="../js/tasks.js" asp-append-version="true"></script>
-
+<script src="../js/tasks.js"></script>
 <script type="text/javascript">
-    getItems();
+    getTasks();
 </script>
 </html>
