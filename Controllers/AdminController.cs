@@ -90,7 +90,7 @@ public class AdminController : ControllerBase
     }
 
     [HttpGet]
-    [Route("{userId}/todo{taskId}")]
+    [Route("{userId}/todo/{taskId}")]
     public IActionResult GetToDoById(int userId,int taskId)
     {
         var user = _taskManagementService.GetUserById(userId);    
