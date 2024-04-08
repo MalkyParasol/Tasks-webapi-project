@@ -28,6 +28,7 @@ dom.addNewUserBtn.onclick=(event)=>{
             name:dom.newUserName.value,
             password:dom.newUserPassword.value,
         }
+        checkTokenExpiration();
         fetch(`/api/user`, {
             method: "POST",
             headers: {
@@ -87,7 +88,7 @@ function drawUsersDetails() {
         isDone: false,
         name: taskToAdd.value,
       };
-
+      checkTokenExpiration();
       fetch(`/api/user/${user.id}/todo`, {
         method: "POST",
         headers: {
@@ -117,6 +118,7 @@ function drawUsersDetails() {
         taskName.value = task.name;
       });
       deleteBtn.addEventListener("click", () => {
+        checkTokenExpiration();
         fetch(`/api/user/${user.id}/todo/${task.id}`, {
           method: "DELETE",
           headers: {
@@ -155,6 +157,7 @@ function drawUsersDetails() {
         isDone: isDone.checked,
         name: taskName.value,
       };
+      checkTokenExpiration();
       fetch(`/api/user/${user.id}/todo/${id.innerHTML}`, {
         method: "PUT",
         headers: {
@@ -305,6 +308,7 @@ function drawRemoveUsers(userContent, user) {
     btnYes.id = "btnYes";
     btnYes.innerHTML = "Yes";
     btnYes.onclick = () => {
+      checkTokenExpiration();
       fetch(`/api/user/${user.id}`, {
         method: "DELETE",
         headers: {

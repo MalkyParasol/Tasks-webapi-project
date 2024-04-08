@@ -11,6 +11,10 @@ const dom = {
   taskToAdd: document.getElementById("add-name"),
   adminDiv: document.getElementById("adminBtn"),
   counter: document.getElementById("counter"),
+  updateUserBtn: document.getElementById("updateUserBtn"),
+  updateUserForm : document.getElementById("updateUserForm"),
+  newUserName : document.getElementById("newUserName"),
+  newUserPassword : document.getElementById("newUserPassword"),
 };
 let tasks = [];
 const userId = 0;
@@ -43,7 +47,7 @@ function drawUserDetails() {
       isDone: false,
       name: dom.taskToAdd.value,
     };
-
+    checkTokenExpiration();
     fetch(`/api/todo`, {
       method: "POST",
       headers: {
@@ -73,6 +77,7 @@ function drawUserDetails() {
       dom.taskName.value = task.name;
     });
     deleteBtn.addEventListener("click", () => {
+      checkTokenExpiration();
       fetch(`/api/todo/${task.id}`, {
         method: "DELETE",
         headers: {
@@ -105,6 +110,7 @@ function drawUserDetails() {
       isDone: dom.isDone.checked,
       name: dom.taskName.value,
     };
+    checkTokenExpiration();
     fetch(`/api/todo/${dom.id.innerHTML}`, {
       method: "PUT",
       headers: {
@@ -136,6 +142,7 @@ function drawUserDetails() {
 }
 
 function drawAdminBtn() {
+  checkTokenExpiration();
   fetch("/api/type", {
     method: "GET",
     headers: {
@@ -155,4 +162,39 @@ function drawAdminBtn() {
       }
     })
     .catch((error) => console.error("unable to get user type", error));
+}
+dom.updateUserBtn.onclick=()=>{
+  dom.updateUserForm.style.display = "block";
+}
+dom.updateUserForm.onsubmit = (event)=>{
+  event.preventDefault();
+  if(dom.newUserName.value === "" || dom.newUserPassword.value === "")
+  {
+    alert("name or password are empty!");
+  }
+  else{
+    const newUserDetails = {
+      name: dom.newUserName.value,
+      password: dom.newUserPassword.value
+    };
+    checkTokenExpiration();
+    fetch(`/api/me`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(newUserDetails),
+    })
+      .then((response) => response.json())
+      .then((newUser) => {
+        console.log(newUser)
+        alert("users datails updated succesfully!");
+        window.location.reload();
+      })
+      .catch((error) => console.error("Unable to add item.", error));
+  }
+  
+
+  
 }

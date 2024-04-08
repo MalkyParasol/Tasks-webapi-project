@@ -35,18 +35,16 @@ namespace MyTasks.Services
         {
             return admins;
         }
-       
-        
+
+
 
         public static SecurityToken GetToken(List<Claim> claims) =>
            new JwtSecurityToken(
                issuer,
                issuer,
                claims,
-               expires: DateTime.Now.AddMonths(4),
-               //.Now.AddMinutes(2),
-               
-               
+               expires: DateTime.Now.AddMinutes(20),
+
                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
            );
 

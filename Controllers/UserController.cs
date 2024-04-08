@@ -15,11 +15,11 @@ public class UserController : ControllerBase
 {
     private ITaskManagementService _taskManagementService;
 
-    
-    public UserController(ITaskManagementService taskManagementService)
+    private IPasswordHasher<User> PasswordHasher;
+    public UserController(ITaskManagementService taskManagementService,IPasswordHasher<User> passwordHasher)
     {
         _taskManagementService = taskManagementService;
-       
+       PasswordHasher = passwordHasher;
     }
 
 
@@ -153,6 +153,28 @@ public class UserController : ControllerBase
         }
         
        
+    }
+    [HttpPut]
+    [Route("me")]
+    public IActionResult updateUsersDetails([FromBody] Person person)
+    {
+        User? user = GetUserFromClaims();
+        if (user == null)
+        {
+            return NotFound("user not found!");
+        }
+        if (person.Password == null)
+            return BadRequest("password is null");
+        person.Password = PasswordHasher.HashPassword(person.Password);
+        try
+        {
+            Person newUser = _taskManagementService.updateUser(person,user.Id);
+            return Ok(newUser);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
     
 }

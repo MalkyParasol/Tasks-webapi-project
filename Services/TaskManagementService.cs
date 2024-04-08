@@ -175,6 +175,21 @@ public class TaskManagementService:ITaskManagementService
         }
         return false;
         }
+
+    public Person updateUser(Person person,int id)
+    {
+        User? user = users.Find(u=>u.Id == id);
+        if (user == null)
+        {
+            throw new Exception("user not found");
+        }
+        if (person.Password == null || person.Name == null)
+            throw new Exception("naem or password are null");
+        user.Name = person.Name;
+        user.Password = person.Password;
+        return new Person(user.Name,user.Password);
+
+    }
 }
 
 public static class TaskManagementUtils

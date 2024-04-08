@@ -6,7 +6,10 @@ const expirationTime = localStorage.getItem("expirationTime");
 const checkTokenExpiration=()=> {
   const now = Math.floor(Date.now()/1000);
   if(expirationTime-now <= 60){
-    window.location.href = "../html/login";
+    alert("Your token is about to expire, you are redirected to the login page");
+    localStorage.removeItem("token");
+    localStorage.removeItem("expirationTime")
+    window.location.href = "../html/login.html";
   }
 }
 function drawSingleTask(tbody, task) {

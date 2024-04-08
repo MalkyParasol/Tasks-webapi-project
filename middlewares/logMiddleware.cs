@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using System.Diagnostics;
 
 public class logMiddleware{
+    private readonly object _lock = new object();
     private RequestDelegate next;
 
     private ILogger<logMiddleware> logger;
@@ -28,13 +29,16 @@ public class logMiddleware{
 
         var requestTime = DateTime.Now;
         string message =$"{requestTime} - url: {c.Request.Path} | controller: {controllerName} | method: {c.Request.Method} | duration time:  {sw.ElapsedMilliseconds}ms | User Name : {c.User?.FindFirst("userName")?.Value ?? "unknown"}";
-        //using (StreamWriter writer = new StreamWriter("Loggers/log.txt", true))
-        //{
-        //    writer.WriteLine(message);
-        //    writer.Close();
-        //}
+        lock(_lock)
+        {
+            using (StreamWriter writer = new StreamWriter("Loggers/log.txt", true))
+            {
+                writer.WriteLine(message);
+            }
+        }
+         
 
-        File.WriteAllText(fileName, message);
+        
        
     }        
 

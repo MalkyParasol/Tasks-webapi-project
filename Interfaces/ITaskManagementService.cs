@@ -17,5 +17,7 @@ public interface ITaskManagementService
     bool DeleteUser(User user);
 
     bool DeleteTask(int userId,int taskId);
+
+    Person updateUser(Person person,int id);
 }
 
