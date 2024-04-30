@@ -19,7 +19,7 @@ const dom = {
 let tasks = [];
 const userId = 0;
 
-writeUserName("the Tasks List of: ");
+writeUserName("The Tasks List of: ");
 
 function getTasks() {
   checkTokenExpiration();

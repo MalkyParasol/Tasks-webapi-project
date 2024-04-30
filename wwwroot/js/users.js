@@ -8,7 +8,7 @@ const dom = {
 };
 writeUserName("Hello To Administrator");
 function displayNewUserForm(){
-  dom.newUserForm.style.display = "block";
+  dom.newUserForm.style.cssText = 'display: flex; flex-direction: column; align-items: center;';
 }
 dom.addNewUserBtn.onclick=(event)=>{
   event.preventDefault();
